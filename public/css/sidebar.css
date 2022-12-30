@@ -10,7 +10,7 @@
 :root{
     /* ===== Colors ===== */
     --primary-color: #0E4BF1;
-    --panel-color: #FFF;
+    --panel-color: rgb(255, 252, 252);
     --text-color: #000;
     --black-light-color: #707070;
     --border-color: #e6e5e5;
@@ -19,6 +19,7 @@
     --box2-color: #FFE6AC;
     --box3-color: #E7D1FC;
     --title-icon-color: #fff;
+    --main-content-color: #F3F4F6;
     
     /* ====== Transition ====== */
     --tran-05: all 0.5s ease;
@@ -206,7 +207,7 @@ body.dark .switch:before{
 .dashboard{
     position: relative;
     left: 250px;
-    background-color: var(--panel-color);
+    background-color: var(--main-content-color);
     min-height: 100vh;
     width: calc(100% - 250px);
     padding: 10px 14px;
@@ -461,3 +462,8 @@ ul{
     padding-left: 0rem !important;
     margin-bottom: 0rem !important;
 } 
+
+/* quitar por si arruina algo esto es para quitar el scroll horizontal de la tabla */
+/* .col-lg-12 .table-responsive{
+    overflow-x:hidden;
+} */
