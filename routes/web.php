@@ -18,7 +18,7 @@ use App\Http\Controllers\UserController;
 //     return view('adminpanel');
 // });
 Route::get('/', function () {
-    return view('expedientes.create');
+    return view('welcome');
 });
 
 Route::get('alumno', function (){
