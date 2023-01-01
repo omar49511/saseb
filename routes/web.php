@@ -30,6 +30,9 @@ Route::get('dashboard', function () {
 });
 
 Route::resource('user', UserController::class);
+// Route::post('users/{id}', function ($id) {
+    
+// });
 
 
 // Route::middleware([
