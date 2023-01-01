@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AlumnoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,18 +22,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('alumno', function (){
-    return view('alumnos.index');
-});
-
 Route::get('dashboard', function () {
     return view('admin.dashboard');
 });
 
 Route::resource('user', UserController::class);
-// Route::post('users/{id}', function ($id) {
-    
-// });
+Route::resource('alumno', AlumnoController::class);
 
 
 // Route::middleware([
