@@ -39,6 +39,20 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         //
+        $alumno = new Alumno;
+
+        $alumno->name = $request->nombre;
+        $alumno->lastname=$request->apellido;
+        $alumno->birthdate=$request->fecha_nacimiento;
+        $alumno->gender=$request->genero;
+        $alumno->birthplace=$request->lugar_nacimiento;
+        $alumno->domicile=$request->domicilio;
+        $alumno->home_phone=$request->telefono_casa;
+        $alumno->cell_phone=$request->telefono_celular;
+        
+        $alumno->save();
+
+        return redirect('/alumno');
     }
 
     /**
@@ -50,6 +64,7 @@ class AlumnoController extends Controller
     public function show(Alumno $alumno)
     {
         //
+
     }
 
     /**
