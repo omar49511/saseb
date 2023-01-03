@@ -2,7 +2,7 @@
 
 @section('contenido')
 
-<form method="POST" action="/alumno" enctype="multipart/form-data" class="px-4 my-20 max-w-3xl mx-auto space-y-6">
+<form method="POST" action="{{ route('alumno.store') }}" enctype="multipart/form-data" class="px-4 my-20 max-w-3xl mx-auto space-y-6">
 
     {{ csrf_field() }}
 

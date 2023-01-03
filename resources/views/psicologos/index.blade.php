@@ -38,7 +38,7 @@
                         <form method="POST" action="/user/{{$user->id}}" class="formulario-eliminar">
                             @method('DELETE')
                             @csrf
-                            <button type='submit' class='bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-3 rounded'">
+                            <button type='submit' class='bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-3 rounded'>
                                 <i class='fa-solid fa-trash-alt'></i>
                             </button>
                         </form>
@@ -49,7 +49,7 @@
             </tbody>
         </table>
     </div>
-
+    
 @stop
 
 @section('js')
