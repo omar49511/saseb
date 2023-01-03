@@ -27,6 +27,7 @@ class UserController extends Controller
     public function create()
     {
         //
+        return view('psicologos.create');
     }
 
     /**
@@ -38,6 +39,25 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        // $request->validate([
+        //     'name'=>'required|max:255',
+        //     'email'=>'required|unique:user|email|max:255',
+        //     'password'=>'required|between:8,255|confirmed',
+        //     'password_confirmation'=>'required',
+        // ]);
+
+
+        $user = new User;
+
+        $user->name = $request->nombre;
+        $user->surname = $request->apellido;
+        $user->secondSurname = $request->apellido2;
+        $user->phone = $request->telefono;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect('/user');
     }
 
     /**
@@ -73,7 +93,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+
+        $user->name = $request->nombre;
+        $user->surname = $request->apellido;
+        $user->secondSurname = $request->apellido2;
+        $user->email = $request->email;
+        $user->phone = $request->telefono;
+        
+        $user->save();
+        return redirect('/user');
     }
 
     /**
@@ -85,5 +113,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        // $url = str_replace('storage', 'public', $user->url);
+
+        // Storage::delete($url);
+
+        $user->delete();
+        return redirect('/user')->with('eliminar', 'ok');
+
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AlumnoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,11 +19,7 @@ use App\Http\Controllers\UserController;
 //     return view('adminpanel');
 // });
 Route::get('/', function () {
-    return view('expedientes.create');
-});
-
-Route::get('alumno', function (){
-    return view('alumnos.index');
+    return view('welcome');
 });
 
 Route::get('dashboard', function () {
@@ -30,6 +27,7 @@ Route::get('dashboard', function () {
 });
 
 Route::resource('user', UserController::class);
+Route::resource('alumno', AlumnoController::class);
 
 
 // Route::middleware([

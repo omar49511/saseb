@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('contenido')
-<div class='p-6'>
-    
-</div>
 
-<form action="" class="px-4 my-20 max-w-3xl mx-auto space-y-6">
+<form method="POST" action="/user/{{$user->id}}" enctype="multipart/form-data" class="px-4 my-20 max-w-3xl mx-auto space-y-6">
+    @method('PATCH')
+    @csrf()
+
     <div class="mb-14 sm:text-center">
         <h1 class="text-3xl font-semibold">Editar Usuario</h1>
         <p class="text-gray-600">Los cambios realizados seran visibles para otros usuarios</p>
@@ -40,16 +40,14 @@
     </div>
     <div class="grid grid-cols-6 gap-6 py-11">
         <div class="col-span-6 sm:col-span-3">
-            <input class="w-full border-2 border-blue-500 hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded-full" type="submit" value="Guardar">
+            <button class="w-full border-2 border-blue-500 hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 rounded-full" type="submit">Guardar</button>
         </div>
-        <div class="col-span-6 sm:col-span-3 border-2 border-red-500 hover:bg-red-700 hover:text-white text-red-500 font-bold py-2 px-4 rounded-full text-center">
-            <a  class=''href="{{ route('user.index') }}">
-                Cancelar 
+        <div class="col-span-6 sm:col-span-3 grid">
+            <a class="text-center col-span-6 border-2 border-red-500 hover:bg-red-700 hover:text-white text-red-500 font-bold py-2  rounded-full" href="{{ route('user.index') }}">
+                Cancelar
             </a>
         </div>
     </div>
 </form>
-
-
 
 @stop

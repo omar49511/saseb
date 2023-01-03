@@ -15,6 +15,8 @@ class AlumnoController extends Controller
     public function index()
     {
         //
+        $alumnos = Alumno::orderBy('id','desc')->get();
+        return view('alumnos.index',['alumnos'=> $alumnos]);
     }
 
     /**
@@ -25,6 +27,7 @@ class AlumnoController extends Controller
     public function create()
     {
         //
+        return view('alumnos.create');
     }
 
     /**
@@ -36,6 +39,20 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         //
+        $alumno = new Alumno;
+
+        $alumno->name = $request->nombre;
+        $alumno->lastname=$request->apellido;
+        $alumno->birthdate=$request->fecha_nacimiento;
+        $alumno->gender=$request->genero;
+        $alumno->birthplace=$request->lugar_nacimiento;
+        $alumno->domicile=$request->domicilio;
+        $alumno->home_phone=$request->telefono_casa;
+        $alumno->cell_phone=$request->telefono_celular;
+        
+        $alumno->save();
+
+        return redirect('/alumno');
     }
 
     /**
@@ -47,6 +64,7 @@ class AlumnoController extends Controller
     public function show(Alumno $alumno)
     {
         //
+
     }
 
     /**
@@ -58,6 +76,7 @@ class AlumnoController extends Controller
     public function edit(Alumno $alumno)
     {
         //
+        return view('alumnos.edit',['alumno'=> $alumno]);
     }
 
     /**
@@ -70,6 +89,17 @@ class AlumnoController extends Controller
     public function update(Request $request, Alumno $alumno)
     {
         //
+        $alumno->name = $request->nombre;
+        $alumno->lastname=$request->apellido;
+        $alumno->birthdate=$request->fecha_nacimiento;
+        $alumno->gender=$request->genero;
+        $alumno->birthplace=$request->lugar_nacimiento;
+        $alumno->domicile=$request->domicilio;
+        $alumno->home_phone=$request->telefono_casa;
+        $alumno->cell_phone=$request->telefono_celular;
+        
+        $alumno->save();
+        return redirect('/alumno');
     }
 
     /**
@@ -81,5 +111,7 @@ class AlumnoController extends Controller
     public function destroy(Alumno $alumno)
     {
         //
+        $alumno->delete();
+        return redirect('/alumno')->with('eliminar', 'ok');
     }
 }
