@@ -36,7 +36,8 @@
                 <li><a href="">
                         <i class="fa-solid fa-folder-open"></i>
                         <span class="link-name">Expedientes</span>
-                    </a></li>
+                    </a>
+                </li>
                 <li><a href="#">
                         <i class="fa-solid fa-file"></i>
                         <span class="link-name">Reportes</span>

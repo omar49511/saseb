@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\ExpedienteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +28,10 @@ Route::get('dashboard', function () {
 });
 
 Route::resource('user', UserController::class);
+
 Route::resource('alumno', AlumnoController::class);
 
+Route::resource('expediente', ExpedienteController::class);
 
 // Route::middleware([
 //     'auth:sanctum',
