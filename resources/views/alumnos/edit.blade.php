@@ -22,7 +22,7 @@
         
         <div class="col-span-6 sm:col-span-2">
             <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-            <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ $alumno->birthdate }}">
+            <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ $alumno->birthdate->format('Y-m-d')}}">
         </div>
         <div class="col-span-6 sm:col-span-2">
             <label for="genero">Genero</label>
