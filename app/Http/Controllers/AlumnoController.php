@@ -27,7 +27,8 @@ class AlumnoController extends Controller
     public function create()
     {
         //
-        return view('alumnos.create');
+        $alumno = new Alumno();
+        return view('alumnos.create',['alumno'=>$alumno]);
     }
 
     /**
@@ -38,6 +39,15 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'fecha_nacimiento' => 'required',
+            'genero' => 'required',
+            'lugar_nacimiento' => 'required',
+            'domicilio' => 'required',
+            'telefono_casa' => 'required',
+            'telefono_celular' => 'required'
+        ]);
         //
         $alumno = new Alumno;
 
@@ -96,6 +106,7 @@ class AlumnoController extends Controller
             'genero' => 'required',
             'lugar_nacimiento' => 'required',
             'domicilio' => 'required',
+            'telefono_casa' => 'required',
             'telefono_celular' => 'required'
         ]);
 
