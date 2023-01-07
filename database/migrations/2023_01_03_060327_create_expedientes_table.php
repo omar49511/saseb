@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('expedientes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_alumno');
-            $table->string('atendio');
             $table->text('motivo_consulta');
             $table->text('descripcion');
             $table->date('fecha');

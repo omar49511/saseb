@@ -23,11 +23,16 @@ class AlumnoFactory extends Factory
             'name' => $this->faker->name(),
             'lastname' => $this->faker->lastName(),
             'birthdate' => $this->faker->dateTime(),
-            'gender' => $this->faker->title($gender = 'male'|'female'),
+            'group'=> $this->faker->randomElement($array = array ('grupo1', 'grupo2','grupo3','grupo4')),
+            'shift'=> $this->faker->randomElement($array = array ('Matutino', 'Vespertino')),
+            'gender' => $this->faker->randomElement($array = array ('Masculino', 'Femenino')),
             'birthplace' => $this->faker->country(),
+            'time_to_reside' => $this->faker->numerify('## años residiendo en la ciudad'),
             'domicile' => $this->faker->address(),
             'home_phone' => $this->faker->phoneNumber(),
             'cell_phone' => $this->faker->tollFreePhoneNumber(),
+            'work' => $this->faker->randomElement($array = array ('si', 'no')),
+            'religion'=> $this->faker->randomElement($array = array ('Cristianismo', 'Islam','Sin religión','Hinduismo','Budismo')),
         ];
     }
 

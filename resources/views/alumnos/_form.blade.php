@@ -32,15 +32,7 @@
         @error('fecha_nacimiento')
             border-red-500
         @enderror "          
-        type="date" name="fecha_nacimiento" id="fecha_nacimiento" value="
-            @php
-                $date = "";
-                if ($alumno->birthdate != null){
-                    $date = $alumno->birthdate->format('Y-m-d');
-                } 
-                echo old('fecha_nacimiento', $date);
-            @endphp
-         ">
+        type="datetime-local" name="fecha_nacimiento" id="fecha_nacimiento" value="{{old('fecha_nacimiento', is_null($alumno->birthdate) ? '': $alumno->birthdate->format('Y-m-d\TH:i'))}}">
         @error('fecha_nacimiento')
         <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
                 {{$message}}

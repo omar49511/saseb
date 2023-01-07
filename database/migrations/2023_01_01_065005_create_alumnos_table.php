@@ -18,11 +18,16 @@ return new class extends Migration
             $table->string("name");
             $table->string("lastname");
             $table->date("birthdate");
+            $table->string("group");
+            $table->string("shift");
             $table->string("gender");
             $table->string("birthplace");
+            $table->string("time_to_reside");
             $table->string("domicile");
             $table->string("home_phone");
             $table->string("cell_phone");
+            $table->string("work");
+            $table->string("religion");
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expediente;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ExpedienteController extends Controller
@@ -27,6 +28,8 @@ class ExpedienteController extends Controller
     public function create()
     {
         //
+
+        return view('expedientes.create');
     }
 
     /**

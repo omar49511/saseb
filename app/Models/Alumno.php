@@ -13,11 +13,16 @@ class Alumno extends Model
         "name",
         "lastname",
         "birthdate",
+        "group",
+        "shift",
         "gender",
         "birthplace",
+        "time_to_reside",
         "domicile",
         "home_phone",
         "cell_phone",
+        "work",
+        "religion",
     ];
 
     protected $dates = ['birthdate'];
