@@ -14,7 +14,8 @@
                 <label for="">Atendió</label>
                 <input type="text"
                     class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]"
-                    id="atendio" name="atendio" value="">
+                    id="atendio" name="atendio" value="{{ Auth::user()->name }}
+                    ">
             </div>
             <div class="col-span-6 sm:col-span-2 ">
                 <label for="">Fecha</label>
@@ -41,7 +42,7 @@
                 <input type="search" id="default-search"
                     class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Buscar alumno por # control" required>
-                <button type="submit"
+                <button type="button" onclick="search_student_by_id();"
                     class="text-white absolute right-2.5 bottom-1.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1">Search</button>
             </div>
             <div class="col-span-6 sm:col-span-2">
@@ -153,4 +154,52 @@
         </div>
     </form>
 
+@stop
+
+@section('js')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+<script>
+    $(document).ready(function () {
+        // console.log('CREATE.BLADE.PHP->section(js)->$::hola')   
+
+        var now = new Date();
+        $('#fecha').val(return_string_date(now)); 
+       
+    });
+
+    function search_student_by_id(){
+
+        var id = $("#default-search").val();
+
+        $.ajax({
+            url: "/alumno/"+id,
+            method: "GET",
+            data: {
+                _token: $('input[name="_token"]').val()
+            },
+            error: function(response) {
+                alert(response);
+            },
+            success: function (response) {
+                var array = JSON.parse(response);
+                console.log(array[0].name);
+                $("#nombre").val(array[0].name);
+                $("#fecha_nacimiento").val(array[0].birthdate.split("T")[0]);
+                $("#sexo").val(array[0].gender);
+                $("#lugar_nacimiento").val(array[0].brithplace);
+                console.log(array[0].birthdate);
+                $("#direccion").val(array[0].domicile);
+                $("#telefonoCasa").val(array[0].home_phone);
+                $("#celular").val(array[0].cell_phone);
+            }
+        });
+    }
+
+    function return_string_date(date){
+        var day = ("0" + date.getDate()).slice(-2);
+        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+        var today = date.getFullYear()+"-"+(month)+"-"+(day) ;
+        return today;
+    }
+</script>
 @stop
