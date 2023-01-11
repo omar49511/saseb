@@ -74,7 +74,8 @@ class AlumnoController extends Controller
     public function show(Alumno $alumno)
     {
         //
-
+        $newAlumno = Alumno::find($alumno);
+        return response(json_encode($newAlumno),200)->header('Content-type','text/plain');
     }
 
     /**
