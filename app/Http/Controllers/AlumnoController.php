@@ -42,11 +42,15 @@ class AlumnoController extends Controller
         $request->validate([
             'nombre' => 'required',
             'fecha_nacimiento' => 'required',
+			'grupo' => 'required',
+			'turno' => 'required',
             'genero' => 'required',
             'lugar_nacimiento' => 'required',
+			'tiempo_residir' => 'required',
             'domicilio' => 'required',
             'telefono_casa' => 'required',
-            'telefono_celular' => 'required'
+            'telefono_celular' => 'required',
+			'religion' => 'required',
         ]);
         //
         $alumno = new Alumno;
@@ -54,11 +58,16 @@ class AlumnoController extends Controller
         $alumno->name = $request->nombre;
         $alumno->lastname=$request->apellido;
         $alumno->birthdate=$request->fecha_nacimiento;
+		$alumno->group = $request->grupo;
+		$alumno->shift = $request->turno;
         $alumno->gender=$request->genero;
         $alumno->birthplace=$request->lugar_nacimiento;
+		$alumno->time_to_reside = $request->tiempo_residir;
         $alumno->domicile=$request->domicilio;
         $alumno->home_phone=$request->telefono_casa;
         $alumno->cell_phone=$request->telefono_celular;
+		$alumno->religion=$request->religion;
+		$alumno->work=$request->trabajo;
         
         $alumno->save();
 
@@ -104,21 +113,30 @@ class AlumnoController extends Controller
         $request->validate([
             'nombre' => 'required',
             'fecha_nacimiento' => 'required',
+			'grupo' => 'required',
+			'turno' => 'required',
             'genero' => 'required',
             'lugar_nacimiento' => 'required',
+			'tiempo_residir' => 'required',
             'domicilio' => 'required',
             'telefono_casa' => 'required',
-            'telefono_celular' => 'required'
+            'telefono_celular' => 'required',
+			'religion' => 'required',
         ]);
 
         $alumno->name = $request->nombre;
         $alumno->lastname=$request->apellido;
         $alumno->birthdate=$request->fecha_nacimiento;
+		$alumno->group = $request->grupo;
+		$alumno->shift = $request->turno;
         $alumno->gender=$request->genero;
         $alumno->birthplace=$request->lugar_nacimiento;
+		$alumno->time_to_reside = $request->tiempo_residir;
         $alumno->domicile=$request->domicilio;
         $alumno->home_phone=$request->telefono_casa;
         $alumno->cell_phone=$request->telefono_celular;
+		$alumno->religion=$request->religion;
+		$alumno->work=$request->trabajo;
         
         $alumno->save();
         return redirect('/alumno');

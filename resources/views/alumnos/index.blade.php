@@ -19,11 +19,16 @@
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Edad</th>
+					<th>Grupo</th>
+					<th>Turno</th>
                     <th>Sexo</th>
                     <th>Lugar de nacimiento</th>
+					<th>Tiempo de residencia</th>
                     <th>Domicilio</th>
                     <th>Telefono casa</th>
                     <th>Telefono celular</th>
+					<th>Trabaja</th>
+					<th>Religion</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -33,12 +38,17 @@
                     <td>{{$alumno['id']}}</td>
                     <td>{{$alumno["name"]}}</td> 
                     <td>{{$alumno["lastname"]}}</td>
-                    <td>{{$alumno["birthdate"]}}</td>
+                    <td><?php $hoy = date('Y-m-d'); $fecha = $alumno['birthdate']; $edad = date_diff(date_create($fecha),date_create($hoy)); echo $edad->format('%y'); ?></td>
+					<td>{{$alumno["group"]}}</td>
+					<td>{{$alumno["shift"]}}</td> 					
                     <td>{{$alumno["gender"]}}</td>
                     <td>{{$alumno["birthplace"]}}</td>
+					<td>{{$alumno["time_to_reside"]}}</td>
                     <td>{{$alumno["domicile"]}}</td>
                     <td>{{$alumno["home_phone"]}}</td>
                     <td>{{$alumno["cell_phone"]}}</td>
+					<td>{{$alumno["work"]}}</td>
+					<td>{{$alumno["religion"]}}</td>
                     <td class="flex space-x-4">
                         <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="alumno/{{$alumno['id']}}/edit">
                             <i class='fa-solid fa-edit'></i>
