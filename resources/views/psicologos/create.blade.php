@@ -10,7 +10,7 @@
     </div>
     <div class="grid grid-cols-6 gap-6">
         <div class="col-span-6 sm:col-span-2">
-            <label for="nombre">Nombre</label>
+            <label for="nombre">Nombre(s)</label>
             <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " type="text" name="nombre" id="nombre" value="{{old('nombre')}}" required>
         </div>
         <div class="col-span-6 sm:col-span-2">

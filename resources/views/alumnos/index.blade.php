@@ -27,7 +27,7 @@
                     <th>Domicilio</th>
                     <th>Telefono casa</th>
                     <th>Telefono celular</th>
-					<th>Trabaja</th>
+					<th>Ocupacion</th>
 					<th>Religion</th>
                     <th>Acciones</th>
                 </tr>

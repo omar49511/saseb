@@ -156,16 +156,18 @@
         @enderror
     </div>
 	
-    <div class="col-span-6 sm:col-span-2">
-        <label for="trabajo">¿Trabaja?</label>
-        <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm 
+    <div class="col-span-6 sm:col-span-3">
+        <label for="trabajo">Ocupacion</label>
+        <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
         @error('trabajo')
             border-red-500
-        @enderror "          
-        name="trabajo" id="trabajo" value="{{old('trabajo', $alumno->work)}}">
-            <option value="si"{{ $alumno->work == "si" ? 'selected' : '' }}>Si</option>
-            <option value="no" {{ $alumno->work == "no" ? 'selected' : '' }}>No</option>
-        </select>
+        @enderror "  
+        type="text" name="trabajo" id="trabajo" value="{{ old('trabajo',$alumno->work)}}">
+        @error('trabajo')
+        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                {{$message}}
+        </span>
+        @enderror
     </div>
 	
 </div>
