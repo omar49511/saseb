@@ -5,7 +5,9 @@
 @stop
 
 @section('contenido')
-    <form class="px-4 my-20 max-w-7xl mx-auto space-y-6" action="" method="POST">
+@include('alumnos._validation')
+    <form class="px-4 my-20 max-w-7xl mx-auto space-y-6" action="{{ route('expediente.store') }}" method="POST">
+        @csrf
         <div class="mb-14 sm:text-center">
             <h1 class="text-3xl font-semibold">Expediente de alumno</h1>
         </div>
@@ -30,7 +32,7 @@
             Ficha de identificación
         </h2>
         <div class="grid grid-cols-6 gap-6">
-            <label for="default-search"
+            <label for="default_search"
                 class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div class="relative col-span-6">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -40,9 +42,14 @@
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </div>
-                <input type="search" id="default-search"
+                <input type="search" id="alumno_id" name="alumno_id"
                     class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Buscar alumno por # control" required>
+                @error('alumno_id') 
+                    <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                        {{$message}}
+                    </span>
+                @enderror
                 <button type="button" onclick="search_student_by_id();"
                     class="text-white absolute right-2.5 bottom-1.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1">Search</button>
             </div>
@@ -134,14 +141,31 @@
                 <label for="">(Quien lo refirio, historia del problema, fecha de aparicion y evolucion, tratamiento
                     o terapia psicologica anterior, otros datos relevantes)</label>
                 <textarea
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
+                    @error('motivoConsulta')
+                        border-red-500
+                    @enderror
+                    " value={{old('motivoConsulta')}}
                     rows="8" id="motivoConsulta" name="motivoConsulta" rows="3"></textarea>
+                @error('motivoConsulta')
+                <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                        {{$message}}
+                </span>
+                @enderror
             </div>
             <div class="col-span-6">
                 <label for="">Descripcion del paciente</label>
                 <textarea
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    rows="8" id="descripcionPaciente" name="descripcionPaciente" rows="3"></textarea>
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
+                    @error('descripcionPaciente')
+                        border-red-500
+                    @enderror "          
+                    value="{{ old('descripcionPaciente') }}" rows="8" id="descripcionPaciente" name="descripcionPaciente" rows="3"></textarea>
+                @error('descripcionPaciente')
+                <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                        {{$message}}
+                </span>
+                @enderror
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <input
@@ -161,8 +185,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
 <script>
     $(document).ready(function () {
-        // console.log('CREATE.BLADE.PHP->section(js)->$::hola')   
-
         var now = new Date();
         $('#fecha').val(return_string_date(now)); 
        
@@ -170,7 +192,7 @@
 
     function search_student_by_id(){
 
-        var id = $("#default-search").val();
+        var id = $("#alumno_id").val();
 
         $.ajax({
             url: "/alumno/"+id,
@@ -183,7 +205,6 @@
             },
             success: function (response) {
                 var array = JSON.parse(response);
-                console.log(array[0].name);
                 $("#nombre").val(array[0].name);
                 $("#apellido_paterno").val(array[0].lastname);
                 $("#fecha_nacimiento").val(array[0].birthdate.split("T")[0]);
@@ -196,8 +217,11 @@
 				$("#tiempoResidencia").val(array[0].time_to_reside);
                 $("#telefonoCasa").val(array[0].home_phone);
                 $("#celular").val(array[0].cell_phone);
-				$("#religion").val(array[0].religion);
-				$("#ocupacion").val(array[0].work);
+                $('#religion').val(array[0].religion);
+                $('#ocupacion').val(array[0].work);
+                $('#tiempoResidencia').val(array[0].time_to_reside);
+                $('#grupo').val(array[0].group);
+                $('#turno').val(array[0].shift);
             }
         });
     }
