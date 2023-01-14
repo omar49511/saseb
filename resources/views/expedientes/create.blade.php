@@ -16,7 +16,7 @@
                 <label for="">Atendió</label>
                 <input type="text"
                     class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]"
-                    id="atendio" name="atendio" value="{{ Auth::user()->name }}
+                    id="atendio" name="atendio" value="{{ Auth::user()->name." ".Auth::user()->surname." ".Auth::user()->secondSurname}}
                     ">
                 <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
             </div>
@@ -129,7 +129,7 @@
                 <label for="">Ocupación</label>
                 <input type="text"
                     class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="ocupacion" name="ocupacion" placeholder="Ocupación">
+                    id="ocupacion" name="ocupacion" placeholder="N/A">
             </div>
         </div>
         <hr class="border-solid border-4 border-gray-200">
@@ -208,9 +208,13 @@
                 $("#nombre").val(array[0].name);
                 $("#apellido_paterno").val(array[0].lastname);
                 $("#fecha_nacimiento").val(array[0].birthdate.split("T")[0]);
+				$("#grupo").val(array[0].group);
+				$("#turno").val(array[0].shift);
                 $("#sexo").val(array[0].gender);
                 $("#lugar_nacimiento").val(array[0].birthplace);
+                console.log(array[0].birthdate);
                 $("#direccion").val(array[0].domicile);
+				$("#tiempoResidencia").val(array[0].time_to_reside);
                 $("#telefonoCasa").val(array[0].home_phone);
                 $("#celular").val(array[0].cell_phone);
                 $('#religion').val(array[0].religion);

@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string("domicile");
             $table->string("home_phone");
             $table->string("cell_phone");
-            $table->string("work");
+            $table->string("work")->nullable();
             $table->string("religion");
             $table->timestamps();
         });

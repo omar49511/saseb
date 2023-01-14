@@ -39,6 +39,30 @@
         </span>
         @enderror
     </div>
+	    <div class="col-span-6 sm:col-span-2">
+        <label for="grupo">Grupo</label>
+        <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
+        @error('grupo')
+            border-red-500
+        @enderror "  
+        type="text" name="grupo" id="grupo" value="{{ old('grupo',$alumno->group)}}">
+        @error('grupo')
+        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                {{$message}}
+        </span>
+        @enderror
+    </div>
+	<div class="col-span-6 sm:col-span-2">
+        <label for="turno">Turno</label>
+        <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm 
+        @error('turno')
+            border-red-500
+        @enderror "          
+        name="turno" id="turno" value="{{old('turno', $alumno->shift)}}">
+            <option value="Matutino"{{ $alumno->shift == "Matutino" ? 'selected' : '' }}>Matutino</option>
+            <option value="Vespertino" {{ $alumno->shift == "Vespertino" ? 'selected' : '' }}>Vespertino</option>
+        </select>
+    </div>
     <div class="col-span-6 sm:col-span-2">
         <label for="genero">Genero</label>
         <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm 
@@ -58,6 +82,19 @@
         @enderror "          
         type="text" name="lugar_nacimiento" id="lugar_nacimiento" value="{{ old('lugar_nacimiento',$alumno->birthplace) }}">
         @error('lugar_nacimiento')
+        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                {{$message}}
+        </span>
+        @enderror
+    </div>
+	<div class="col-span-6 sm:col-span-2">
+        <label for="tiempo_residir">Tiempo de residencia</label>
+        <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
+        @error('tiempo_residir')
+            border-red-500
+        @enderror "          
+        type="text" name="tiempo_residir" id="tiempo_residir" value="{{ old('tiempo_residir',$alumno->time_to_reside) }}">
+        @error('tiempo_residir')
         <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
                 {{$message}}
         </span>
@@ -104,5 +141,33 @@
         </span>
         @enderror
     </div>
-
+	
+	<div class="col-span-6 sm:col-span-3">
+        <label for="religion">Religion</label>
+        <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
+        @error('religion')
+            border-red-500
+        @enderror "  
+        type="text" name="religion" id="religion" value="{{ old('religion',$alumno->religion)}}">
+        @error('religion')
+        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                {{$message}}
+        </span>
+        @enderror
+    </div>
+	
+    <div class="col-span-6 sm:col-span-3">
+        <label for="trabajo">Ocupacion</label>
+        <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
+        @error('trabajo')
+            border-red-500
+        @enderror "  
+        type="text" name="trabajo" id="trabajo" value="{{ old('trabajo',$alumno->work)}}">
+        @error('trabajo')
+        <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                {{$message}}
+        </span>
+        @enderror
+    </div>
+	
 </div>
