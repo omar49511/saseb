@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_alumno');
             $table->text('motivo_consulta');
             $table->text('descripcion');
-            $table->date('fecha');
+            //$table->date('fecha');
             $table->unsignedBigInteger('id_usuario');
             $table->timestamps();
             $table->foreign("id_alumno")

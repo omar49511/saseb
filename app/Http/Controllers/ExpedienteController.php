@@ -41,6 +41,21 @@ class ExpedienteController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'user_id' => 'required',
+            'motivoConsulta' => 'required',
+            'descripcionPaciente' => 'required',
+            'alumno_id' => 'required'
+        ]);
+
+        $expediente = new Expediente();
+        $expediente->id_alumno = $request->alumno_id;
+        $expediente->id_usuario = $request->user_id;
+        $expediente->motivo_consulta = $request->motivoConsulta;
+        $expediente->descripcion = $request->descripcionPaciente;
+
+        $expediente->save();
+        return redirect(route('expediente.index'));
     }
 
     /**
