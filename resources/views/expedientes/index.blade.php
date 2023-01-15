@@ -24,17 +24,21 @@
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Telefono</th>
+                    <th>Atendió</th>
+                    <th>Fecha</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody id="tabla">
                 @foreach ($expedientes as $expediente)
                 <tr>
-                    <td>{{$expediente['id']}}</td>
-                    <td>{{$expediente['name']}}</td>
-                    <td>{{$expediente['surname']}}  {{$expediente['secondSurname']}}</td>
-                    <td>{{$expediente['email']}}</td>
-                    <td>{{$expediente['phone']}}</td>
+                    <td>{{$expediente->id}}</td>
+                    <td>{{$expediente->alumno->name}}</td>
+                    <td>{{$expediente->alumno->lastname}}</td>
+                    <td>{{$expediente->alumno->email}}</td>
+                    <td>{{$expediente->alumno->cell_phone}}</td>
+                    <td>{{$expediente->user->name." ".$expediente->user->surname}}</td>
+                    <td>{{$expediente->created_at}}</td>
                     <td class="flex space-x-4">
                         <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="expediente/{{$expediente['id']}}/edit">
                             <i class='fa-solid fa-edit'></i>

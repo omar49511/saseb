@@ -27,4 +27,7 @@ class Alumno extends Model
 
     protected $dates = ['birthdate'];
     
+    public function expedientes(){
+        return $this->hasMany(Expediente::class);
+    }
 }

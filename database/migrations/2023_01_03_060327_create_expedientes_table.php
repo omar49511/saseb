@@ -15,18 +15,18 @@ return new class extends Migration
     {
         Schema::create('expedientes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_alumno');
+            $table->unsignedBigInteger('alumno_id');
             $table->text('motivo_consulta');
             $table->text('descripcion');
             //$table->date('fecha');
-            $table->unsignedBigInteger('id_usuario');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
-            $table->foreign("id_alumno")
+            $table->foreign("alumno_id")
                 ->references("id")
                 ->on("alumnos")
                 ->onDelete("cascade")
                 ->onUpdate("cascade");
-            $table->foreign("id_usuario")
+            $table->foreign("user_id")
                 ->references("id")
                 ->on("users")
                 ->onDelete("cascade")

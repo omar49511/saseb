@@ -49,8 +49,8 @@ class ExpedienteController extends Controller
         ]);
 
         $expediente = new Expediente();
-        $expediente->id_alumno = $request->alumno_id;
-        $expediente->id_usuario = $request->user_id;
+        $expediente->alumno_id = $request->alumno_id;
+        $expediente->user_id = $request->user_id;
         $expediente->motivo_consulta = $request->motivoConsulta;
         $expediente->descripcion = $request->descripcionPaciente;
 

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Expediente extends Model
 {
     use HasFactory;
+
+    public function alumno(){
+        return $this->belongsTo(Alumno::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
