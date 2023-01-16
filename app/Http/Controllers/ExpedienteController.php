@@ -114,5 +114,7 @@ class ExpedienteController extends Controller
     public function destroy(Expediente $expediente)
     {
         //
+        $expediente->delete();
+        return redirect(route('expediente.index'))->with('eliminar', 'ok');
     }
 }
