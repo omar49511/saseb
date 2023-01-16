@@ -40,7 +40,7 @@
                     <td>{{$expediente->user->name." ".$expediente->user->surname}}</td>
                     <td>{{$expediente->created_at}}</td>
                     <td class="flex space-x-4">
-                        <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="expediente/{{$expediente['id']}}/edit">
+                        <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="{{route('expediente.edit', ['expediente'=>$expediente])}}">
                             <i class='fa-solid fa-edit'></i>
                         </a>
                         <form method="POST" action="/expediente/{{$expediente->id}}" class="formulario-eliminar">
