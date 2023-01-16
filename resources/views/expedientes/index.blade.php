@@ -50,6 +50,9 @@
                                 <i class='fa-solid fa-trash-alt'></i>
                             </button>
                         </form>
+                        <a href="{{route('expediente.print', ['expediente'=>$expediente->id])}}"  class='bg-green-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' >
+                            <i class="fa fa-print"></i>
+                        </a>
                 @endforeach
             </tbody>
         </table>
@@ -73,5 +76,36 @@
             }
         });
     });
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if(session('eliminar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'El expediente ha sido eliminado.',
+                'success'
+            )
+        </script>
+@endif
+
+<script>
+    $('.formulario-eliminar').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Si, bórralo!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+    });
+
 </script>
 @stop
