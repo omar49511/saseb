@@ -20,7 +20,7 @@ class AlumnoFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
             'birthdate' => $this->faker->dateTime(),
             'group'=> $this->faker->randomElement($array = array ('grupo1', 'grupo2','grupo3','grupo4')),
