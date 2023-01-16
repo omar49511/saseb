@@ -125,20 +125,50 @@
                 </p>
         </div>
         <div class="col-span-6 sm:col-span-3">
-            <input
+            <a  href="{{route('expediente.edit', ['expediente'=>$expediente])}}">
+                <button
                 class="w-full border border-blue-500 hover:bg-blue-600 bg-blue-200 hover:text-white text-blue-500 font-bold py-2 rounded"
-                type="submit" class="form-control" value="Editar">
+                 class="form-control" >Editar</button></a>
         </div>
-        <div class="col-span-2 sm:col-span-3">
-            <a class="text-center w-full border border-red-500 hover:bg-red-600 bg-red-200 hover:text-white text-red-500 font-bold py-2 rounded"
-                type="submit" class="form-control">Borrar</a>
+        <div class="col-span-3 sm:col-span-2">
+        <form  method="POST" action="/expediente/{{$expediente->id}}" class="formulario-eliminar">
+        @method('DELETE')
+        @csrf
+            <button class="text-center w-full border border-red-500 hover:bg-red-600 bg-red-200 hover:text-white text-red-500 font-bold py-2 rounded"
+                type="submit" class="form-control">Borrar</button>
+        </form>
         </div>
-        <div class="col-span-1 sm:col-span-3">
-            <a class="text-center w-full border border-red-500 hover:bg-red-600 bg-red-200 hover:text-white text-red-500 font-bold py-2 rounded"
-                type="submit" class="form-control">Imprimir</a>
+        <div class="col-span-3 sm:col-span-1">
+            <a href="#">
+            <button  class="text-center w-full border border-green-500 hover:bg-green-600 bg-green-200 hover:text-white text-green-500 font-bold py-2 rounded"
+                class="form-control">Imprimir</button></a>
         </div>
 
     </div>
 </div>
 
+@stop
+
+@section('js')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    $('.formulario-eliminar').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Si, bórralo!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
+    });
+</script>
 @stop
