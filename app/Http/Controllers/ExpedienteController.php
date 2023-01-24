@@ -66,7 +66,7 @@ class ExpedienteController extends Controller
      */
     public function show(Expediente $expediente)
     {
-        //
+        return view('expedientes.show', ['expediente'=>$expediente]);
     }
 
     /**
