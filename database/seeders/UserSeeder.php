@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'surname' => 'Reyes',
             'secondSurname' => 'Zamudio',
             'phone' => '6643538663',
-            'email' => 'omar49511@gmail.com',
+            'email' => 'omar@gmail.com',
             'password' => bcrypt('12345678')
         ])->assignRole('SuperAdmin');
         
