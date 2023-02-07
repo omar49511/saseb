@@ -4,7 +4,9 @@
 
 1. Instala laragon
 
-2. Ejecuta los siguientes comandos
+2. Ejecuta laragon
+
+3. Ejecuta los siguientes comandos
 
 ``` 
 git clone 'url del repositorio'
