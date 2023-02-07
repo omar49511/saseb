@@ -4,6 +4,8 @@
 
 1. Instala laragon
 
+2. Instala Node.js
+
 2. Ejecuta laragon
 
 3. Ejecuta los siguientes comandos
