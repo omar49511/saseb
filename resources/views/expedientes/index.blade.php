@@ -22,7 +22,6 @@
                     <th>#ID</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Email</th>
                     <th>Telefono</th>
                     <th>Atendió</th>
                     <th>Fecha</th>
@@ -35,7 +34,6 @@
                     <td>{{$expediente->id}}</td>
                     <td>{{$expediente->alumno->name}}</td>
                     <td>{{$expediente->alumno->lastname}}</td>
-                    <td>{{$expediente->alumno->email}}</td>
                     <td>{{$expediente->alumno->cell_phone}}</td>
                     <td>{{$expediente->user->name." ".$expediente->user->surname}}</td>
                     <td>{{$expediente->created_at}}</td>
@@ -50,6 +48,8 @@
                                 <i class='fa-solid fa-trash-alt'></i>
                             </button>
                         </form>
+                    </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>

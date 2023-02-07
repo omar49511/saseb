@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:alumno.index')->only('index');
+        $this->middleware('permission:alumno.create')->only(['create','store']);
+        $this->middleware('permission:alumno.edit')->only(['edit','update']);
+        $this->middleware('permission:alumno.destroy')->only('destroy');
+    }
+
     public function index()
     {
         //

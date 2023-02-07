@@ -8,14 +8,19 @@ use Illuminate\Http\Request;
 
 class ExpedienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('permission:expediente.index')->only('index');
+        $this->middleware('permission:expediente.create')->only(['create','store']);
+        $this->middleware('permission:expediente.edit')->only(['edit','update']);
+        $this->middleware('permission:expediente.destroy')->only('destroy');
+    }
     public function index()
     {
-        //
+        if(auth()->user()->hasRole('Psicologo')){
+            $expediente = Expediente::where('user_id',auth()->user()->id)->get();
+            return view('expedientes.index', ['expedientes'=>$expediente]);
+        }
         $expediente = Expediente::get();
         return view('expedientes.index', ['expedientes'=>$expediente]);
     }

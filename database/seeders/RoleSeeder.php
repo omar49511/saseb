@@ -23,28 +23,30 @@ class RoleSeeder extends Seeder
         $roleA = Role::create(['name'=>'Admin']);
         $roleP = Role::create(['name'=>'Psicologo']);
 
-        Permission::create(['name' => 'admin.home']);
+        Permission::create(['name' => 'dashboard'])->syncRoles([$roleSA, $roleA, $roleP]);
 
         // este permiso es para que los usuarios psicologos no puedan ver la tabla para crear usuarios
 
-        Permission::create(['name' => 'admin.usuarios.index']);
-        Permission::create(['name' => 'admin.usuarios.create']);
-        Permission::create(['name' => 'admin.usuarios.edit']);
-        Permission::create(['name' => 'admin.usuarios.destroy']);
+        Permission::create(['name' => 'user.index'])->syncRoles([$roleSA, $roleA]);
+        Permission::create(['name' => 'user.create'])->syncRoles([$roleSA, $roleA]);
+        Permission::create(['name' => 'user.edit'])->syncRoles([$roleSA, $roleA]);
+        Permission::create(['name' => 'user.destroy'])->syncRoles([$roleSA, $roleA]);
 
-        Permission::create(['name' => 'admin.alumnos.index']);
-        Permission::create(['name' => 'admin.alumnos.create']);
-        Permission::create(['name' => 'admin.alumnos.edit']);
-        Permission::create(['name' => 'admin.alumnos.destroy']);
+        Permission::create(['name' => 'alumno.index'])->syncRoles([$roleSA, $roleA, $roleP]);
+        Permission::create(['name' => 'alumno.create'])->syncRoles([$roleSA, $roleA]);
+        Permission::create(['name' => 'alumno.edit'])->syncRoles([$roleSA, $roleA]);
+        Permission::create(['name' => 'alumno.destroy'])->syncRoles([$roleSA, $roleA]);
 
-        Permission::create(['name' => 'admin.expedientes.index']);
-        Permission::create(['name' => 'admin.expedientes.create']);
-        Permission::create(['name' => 'admin.expedientes.edit']);
-        Permission::create(['name' => 'admin.expedientes.destroy']);
+        Permission::create(['name' => 'expediente.index'])->syncRoles([$roleSA, $roleA, $roleP]);
+        Permission::create(['name' => 'expediente.create'])->syncRoles([$roleSA, $roleA, $roleP]);
+        Permission::create(['name' => 'expediente.edit'])->syncRoles([$roleSA, $roleA, $roleP]);
+        Permission::create(['name' => 'expediente.destroy'])->syncRoles([$roleSA, $roleA, $roleP]);
 
-        Permission::create(['name' => 'admin.reportes.index']);
-        Permission::create(['name' => 'admin.reportes.create']);
-        Permission::create(['name' => 'admin.reportes.edit']);
-        Permission::create(['name' => 'admin.reportes.destroy']);
+        Permission::create(['name' => 'reporte.index'])->syncRoles([$roleSA, $roleA, $roleP]);
+        Permission::create(['name' => 'reporte.create'])->syncRoles([$roleSA, $roleA, $roleP]);
+        Permission::create(['name' => 'reporte.edit'])->syncRoles([$roleSA, $roleA, $roleP]);
+        Permission::create(['name' => 'reporte.destroy'])->syncRoles([$roleSA, $roleA, $roleP]);
+
+
     }
 }
