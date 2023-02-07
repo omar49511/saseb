@@ -2,13 +2,13 @@
 
 ## Como instalar
 
-1. Instala laragon
+> 1. Instala laragon
 
-2. Instala Node.js
+> 2. Instala Node.js
 
-2. Ejecuta laragon
+> 3. Ejecuta laragon
 
-3. Ejecuta los siguientes comandos
+> 4. Ejecuta los siguientes comandos
 
 ``` 
 git clone 'url del repositorio'
@@ -28,7 +28,7 @@ cp .env.example .env
 ```
 php artisan key:generate
 ```
-> 4. Crear la base de datos con el nombre laravel
+> 5. Crear la base de datos con el nombre laravel
 ```
 php artisan migrate:fresh --seed
 ```
