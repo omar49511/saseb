@@ -22,7 +22,6 @@
                     <th>#ID</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
-                    <th>Email</th>
                     <th>Telefono</th>
                     <th>Atendió</th>
                     <th>Fecha</th>
@@ -35,7 +34,6 @@
                     <td>{{$expediente->id}}</td>
                     <td>{{$expediente->alumno->name}}</td>
                     <td>{{$expediente->alumno->lastname}}</td>
-                    <td>{{$expediente->alumno->email}}</td>
                     <td>{{$expediente->alumno->cell_phone}}</td>
                     <td>{{$expediente->user->name." ".$expediente->user->surname}}</td>
                     <td>{{$expediente->created_at}}</td>
@@ -53,6 +51,8 @@
                         <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="expediente/{{$expediente['id']}}">
                             <i class="fa fa-eye"></i>
                         </a>
+                    </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>

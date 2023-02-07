@@ -16,6 +16,7 @@ use App\Http\Controllers\ExpedienteController;
 |
 */
 
+
 // Route::get('/', function () {
 //     return view('adminpanel');
 // });
@@ -23,22 +24,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('dashboard', function () {
     return view('admin.dashboard');
 });
-
 Route::resource('user', UserController::class);
-
 Route::resource('alumno', AlumnoController::class);
-
 Route::resource('expediente', ExpedienteController::class);
-
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('admin.dashboard');
-//     })->name('dashboard');
-// });

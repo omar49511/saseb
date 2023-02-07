@@ -8,9 +8,11 @@
 
 @section('contenido')
 
+    @can('alumno.create')
     <div class="overflow-hidden bg-blue-700 sm:rounded-t-lg p-10">
         <a href="{{ route('alumno.create') }}" class="border-2 border-white hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Registrar Alumno</a>
     </div>
+    @endcan
     <div class="px-4 mt-5 mb-20  mx-auto space-y-6">
         <table class='table table-striped table-hover' width="100%" id="tabla">
             <thead>
@@ -29,7 +31,9 @@
                     <th>Telefono celular</th>
 					<th>Ocupacion</th>
 					<th>Religion</th>
+                    @can('alumno.edit')
                     <th>Acciones</th>
+                    @endcan
                 </tr>
             </thead>
             <tbody id="databody">
@@ -49,6 +53,7 @@
                     <td>{{$alumno["cell_phone"]}}</td>
 					<td>{{$alumno["work"]}}</td>
 					<td>{{$alumno["religion"]}}</td>
+                    @can('alumno.edit')
                     <td class="flex space-x-4">
                         <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="alumno/{{$alumno['id']}}/edit">
                             <i class='fa-solid fa-edit'></i>
@@ -60,8 +65,8 @@
                                 <i class='fa-solid fa-trash-alt'></i>
                             </button>
                         </form>
-                        
                     </td>
+                    @endcan
                 </tr>
                 @endforeach
             </tbody>
