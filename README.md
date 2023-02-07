@@ -28,6 +28,7 @@ cp .env.example .env
 ```
 php artisan key:generate
 ```
+> 4. Crear la base de datos con el nombre laravel
 ```
 php artisan migrate:fresh --seed
 ```
