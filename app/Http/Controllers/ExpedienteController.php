@@ -71,7 +71,7 @@ class ExpedienteController extends Controller
      */
     public function show(Expediente $expediente)
     {
-        //
+        return view('expedientes.show', ['expediente'=>$expediente]);
     }
 
     /**
@@ -82,7 +82,7 @@ class ExpedienteController extends Controller
      */
     public function edit(Expediente $expediente)
     {
-        //
+        return view('expedientes.edit', ['expediente' => $expediente]);
     }
 
     /**
@@ -94,7 +94,20 @@ class ExpedienteController extends Controller
      */
     public function update(Request $request, Expediente $expediente)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'motivoConsulta' => 'required',
+            'descripcionPaciente' => 'required',
+            'alumno_id' => 'required'
+        ]);
+
+        $expediente->alumno_id = $request->alumno_id;
+        $expediente->user_id = $request->user_id;
+        $expediente->motivo_consulta = $request->motivoConsulta;
+        $expediente->descripcion = $request->descripcionPaciente;
+
+        $expediente->save();
+        return redirect(route('expediente.index'));
     }
 
     /**
@@ -106,5 +119,7 @@ class ExpedienteController extends Controller
     public function destroy(Expediente $expediente)
     {
         //
+        $expediente->delete();
+        return redirect(route('expediente.index'))->with('eliminar', 'ok');
     }
 }

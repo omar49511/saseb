@@ -38,7 +38,7 @@
                     <td>{{$expediente->user->name." ".$expediente->user->surname}}</td>
                     <td>{{$expediente->created_at}}</td>
                     <td class="flex space-x-4">
-                        <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="expediente/{{$expediente['id']}}/edit">
+                        <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="{{route('expediente.edit', ['expediente'=>$expediente])}}">
                             <i class='fa-solid fa-edit'></i>
                         </a>
                         <form method="POST" action="/expediente/{{$expediente->id}}" class="formulario-eliminar">
@@ -48,6 +48,9 @@
                                 <i class='fa-solid fa-trash-alt'></i>
                             </button>
                         </form>
+                        <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="expediente/{{$expediente['id']}}">
+                            <i class="fa fa-eye"></i>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
@@ -72,6 +75,36 @@
                 url: "{{asset('Datatable/es-ES.json')}}"
             }
         });
+    });
+</script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if(session('eliminar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'El expediente ha sido eliminado.',
+                'success'
+            )
+        </script>
+@endif
+
+<script>
+    $('.formulario-eliminar').submit(function(e){
+        e.preventDefault();
+        Swal.fire({
+            title: '¿Estas seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Si, bórralo!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.submit();
+            }
+        })
     });
 </script>
 @stop
