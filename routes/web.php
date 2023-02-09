@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\ExpedienteController;
+use App\Http\Controllers\ReporteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +32,4 @@ Route::middleware('auth')->get('dashboard', function () {
 Route::resource('user', UserController::class);
 Route::resource('alumno', AlumnoController::class);
 Route::resource('expediente', ExpedienteController::class);
+Route::resource('reporte', ReporteController::class);
