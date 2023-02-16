@@ -16,15 +16,14 @@
                 <label for="">Atendió</label>
                 <input type="text"
                     class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]"
-                    id="atendio" name="atendio" value="{{ Auth::user()->name." ".Auth::user()->surname." ".Auth::user()->secondSurname}}
-                    ">
+                    id="atendio" name="atendio" value="{{ Auth::user()->name." ".Auth::user()->surname." ".Auth::user()->secondSurname}}" disabled>
                 <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
             </div>
             <div class="col-span-6 sm:col-span-2 ">
                 <label for="">Fecha</label>
                 <input type="date"
                     class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]"
-                    id="fecha" name="fecha">
+                    id="fecha" name="fecha" disabled>
             </div>
         </div>
         <hr class="border-solid border-4 border-gray-200">
@@ -42,9 +41,7 @@
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                 </div>
-                <input type="search" id="alumno_id" name="alumno_id"
-                    class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Buscar alumno por # control" required>
+                <input type="search" id="alumno_id" name="alumno_id" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Buscar alumno por # control" value="{{$alumno->id}}" required>
                 @error('alumno_id') 
                     <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
                         {{$message}}
@@ -57,79 +54,65 @@
                 <label for="">Nombre del alumno</label>
                 <input type="text"
                     class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="nombre" name="nombre" placeholder="Nombre del alumno">
+                    id="nombre" name="nombre" placeholder="Nombre del alumno" value="{{$alumno->name}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-2">
                 <label for="">Apellido</label>
                 <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="apellido_paterno" name="apellidoPaterno" placeholder="Apellido paterno del alumno">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="apellido_paterno" name="apellidoPaterno" placeholder="Apellido paterno del alumno" value="{{$alumno->lastname}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-1">
                 <label for="">Edad</label>
                 <input type="date"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="fecha_nacimiento" name="fechaNacimiento" placeholder="Fecha de nacimiento">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="fecha_nacimiento" name="fechaNacimiento" placeholder="Fecha de nacimiento" value="{{explode(" ",$alumno->birthdate)[0]}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-1">
                 <label for="">Grupo</label>
                 <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="grupo" name="grupo" placeholder="Grupo">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="grupo" name="grupo" placeholder="Grupo" value="{{$alumno->group}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-1">
                 <label for="">Turno</label>
                 <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="turno" name="turno" placeholder="Turno">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="turno" name="turno" placeholder="Turno" value="{{$alumno->shift}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-1">
                 <label for="">Sexo</label>
                 <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="sexo" name="sexo" placeholder="Sexo">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="sexo" name="sexo" placeholder="Sexo" value="{{$alumno->gender}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-4">
                 <label for="">Lugar de nacimiento</label>
                 <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="lugar_nacimiento" name="lugar" placeholder="Lugar de nacimiento">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="lugar_nacimiento" name="lugar" placeholder="Lugar de nacimiento" value="{{$alumno->birthplace}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Dirección</label>
                 <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="direccion" name="direccion" placeholder="Dirección">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="direccion" name="direccion" placeholder="Dirección" value="{{$alumno->domicile}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Tiempo de residencia</label>
                 <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="tiempoResidencia" name="tiempoResidencia" placeholder="Tiempo de residencia">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="tiempoResidencia" name="tiempoResidencia" placeholder="Tiempo de residencia" value="{{$alumno->time_to_reside}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Teléfono de casa</label>
                 <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="telefonoCasa" name="telefonoCasa" placeholder="Teléfono de Casa">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="telefonoCasa" name="telefonoCasa" placeholder="Teléfono de Casa" value="{{$alumno->home_phone}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Teléfono Celular</label>
                 <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="celular" name="telefonoCelular" placeholder="Teléfono celular">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="celular" name="telefonoCelular" placeholder="Teléfono celular" value="{{$alumno->cell_phone}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Religión</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="religion" name="religion" placeholder="Religión">
+                <input type="text" class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="religion" name="religion" placeholder="Religión" value="{{$alumno->religion}}" disabled>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Ocupación</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    id="ocupacion" name="ocupacion" placeholder="N/A">
+                <input type="text" class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" id="ocupacion" name="ocupacion" placeholder="N/A" value="{{$alumno->work}}" disabled>
             </div>
         </div>
         <hr class="border-solid border-4 border-gray-200">
@@ -145,7 +128,7 @@
                     @error('motivoConsulta')
                         border-red-500
                     @enderror
-                    " value={{old('motivoConsulta')}}
+                    " value="{{old('motivoConsulta')}}"
                     rows="8" id="motivoConsulta" name="motivoConsulta" rows="3"></textarea>
                 @error('motivoConsulta')
                 <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
@@ -195,7 +178,7 @@
         var id = $("#alumno_id").val();
 
         $.ajax({
-            url: "/alumno/"+id,
+            url: "/alumno/json/"+id,
             method: "GET",
             data: {
                 _token: $('input[name="_token"]').val()
@@ -205,23 +188,23 @@
             },
             success: function (response) {
                 var array = JSON.parse(response);
-                $("#nombre").val(array[0].name);
-                $("#apellido_paterno").val(array[0].lastname);
-                $("#fecha_nacimiento").val(array[0].birthdate.split("T")[0]);
-				$("#grupo").val(array[0].group);
-				$("#turno").val(array[0].shift);
-                $("#sexo").val(array[0].gender);
-                $("#lugar_nacimiento").val(array[0].birthplace);
-                console.log(array[0].birthdate);
-                $("#direccion").val(array[0].domicile);
-				$("#tiempoResidencia").val(array[0].time_to_reside);
-                $("#telefonoCasa").val(array[0].home_phone);
-                $("#celular").val(array[0].cell_phone);
-                $('#religion').val(array[0].religion);
-                $('#ocupacion').val(array[0].work);
-                $('#tiempoResidencia').val(array[0].time_to_reside);
-                $('#grupo').val(array[0].group);
-                $('#turno').val(array[0].shift);
+                $("#nombre").val(array.name);
+                $("#apellido_paterno").val(array.lastname);
+                $("#fecha_nacimiento").val(array.birthdate.split("T")[0]);
+				$("#grupo").val(array.group);
+				$("#turno").val(array.shift);
+                $("#sexo").val(array.gender);
+                $("#lugar_nacimiento").val(array.birthplace);
+                console.log(array.birthdate);
+                $("#direccion").val(array.domicile);
+				$("#tiempoResidencia").val(array.time_to_reside);
+                $("#telefonoCasa").val(array.home_phone);
+                $("#celular").val(array.cell_phone);
+                $('#religion').val(array.religion);
+                $('#ocupacion').val(array.work);
+                $('#tiempoResidencia').val(array.time_to_reside);
+                $('#grupo').val(array.group);
+                $('#turno').val(array.shift);
             }
         });
     }

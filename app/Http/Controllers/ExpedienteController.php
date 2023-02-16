@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Expediente;
 use App\Models\User;
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 
 class ExpedienteController extends Controller
@@ -33,8 +34,12 @@ class ExpedienteController extends Controller
     public function create()
     {
         //
+        $alumno = new Alumno();
+        return view('expedientes.create', ['alumno' => $alumno]);
+    }
 
-        return view('expedientes.create');
+    public function create_with_student(Alumno $alumno){
+        return view('expedientes.create', ['alumno' => $alumno]);
     }
 
     /**
