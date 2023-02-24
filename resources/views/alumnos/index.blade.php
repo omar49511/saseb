@@ -65,6 +65,9 @@
                                 <i class='fa-solid fa-trash-alt'></i>
                             </button>
                         </form>
+                        <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="expediente/create/{{$alumno['id']}}">
+                            <i class="fa-solid fa-folder-open"></i>
+                        </a>
                     </td>
                     @endcan
                 </tr>

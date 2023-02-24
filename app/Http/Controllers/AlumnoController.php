@@ -88,8 +88,11 @@ class AlumnoController extends Controller
     {
         //
         // TODO: crear un nuevo metodo para regresar el alumno como json
-        $newAlumno = Alumno::find($alumno);
-        return response(json_encode($newAlumno),200)->header('Content-type','text/plain');
+    }
+
+    public function get_alumn_json(Alumno $alumno){
+        return response(json_encode($alumno),200)->header('Content-type','text/plain');
+
     }
 
     /**
