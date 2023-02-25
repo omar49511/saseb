@@ -139,9 +139,8 @@
         </form>
         </div> --}}
         <div class="col-span-3 sm:col-span-1">
-            <a href="#">
-            <button  class="text-center w-full border border-green-500 hover:bg-green-600 bg-green-200 hover:text-white text-green-500 font-bold py-2 rounded"
-                class="form-control">Imprimir</button></a>
+            <a href="{{route('expediente.print', ['expediente'=>$expediente->id])}}">
+            <button  class="text-center w-full border border-green-500 hover:bg-green-600 bg-green-200 hover:text-white text-green-500 font-bold py-2 rounded">Imprimir</button></a>
         </div>
 
     </div>
