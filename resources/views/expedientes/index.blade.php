@@ -51,8 +51,8 @@
                             </button>
                         </form>
                         <a type='button' title="Ver" class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="expediente/{{$expediente['id']}}">
-                            <i class="fa fa-eye"></i>
-                        <a href="{{route('expediente.print', ['expediente'=>$expediente->id])}}" title="Imprimir" class='bg-green-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' >
+                            <i class="fa fa-eye"></i></a>
+                        <a type='button' href="{{route('expediente.print', ['expediente'=>$expediente->id])}}" title="Imprimir" class='bg-green-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' >
                             <i class="fa fa-print"></i>
                         </a>
                 @endforeach
