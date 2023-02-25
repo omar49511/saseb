@@ -2,24 +2,39 @@
 
 ## Como instalar
 
-1. Instala laragon
+> 1. Instala laragon
 
-2. Ejecuta los siguientes comandos
+> 2. Instala Node.js
 
-> git clone 'url del repositorio'
+> 3. Ejecuta laragon
 
-> cd saseb
+> 4. Ejecuta los siguientes comandos
 
-> composer install
-
-> npm install
-
->cp .env.example .env
-
->php artisan key:generate
-
->php artisan migrate:fresh --seed
-
->php artisan serve
-
->npm run dev
+``` 
+git clone 'url del repositorio'
+```
+```
+cd saseb
+```
+```
+composer install
+```
+```
+npm install
+```
+```
+cp .env.example .env
+```
+```
+php artisan key:generate
+```
+> 5. Crear la base de datos con el nombre laravel
+```
+php artisan migrate:fresh --seed
+```
+```
+php artisan serve
+```
+```
+npm run dev
+```

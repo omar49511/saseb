@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\ExpedienteController;
+use App\Http\Controllers\ReporteController;
+use Laravel\Jetstream\Rules\Role;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +19,7 @@ use App\Http\Controllers\ExpedienteController;
 |
 */
 
+
 // Route::get('/', function () {
 //     return view('adminpanel');
 // });
@@ -23,24 +27,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dashboard', function () {
+
+Route::middleware('auth')->get('dashboard', function () {
     return view('admin.dashboard');
 });
-
 Route::resource('user', UserController::class);
-
 Route::resource('alumno', AlumnoController::class);
 
 Route::get('expediente/print/{expediente}', [ ExpedienteController::class, 'print'] )->name('expediente.print');
 Route::resource('expediente', ExpedienteController::class);
-
-
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('admin.dashboard');
-//     })->name('dashboard');
-// });
+Route::resource('reporte', ReporteController::class);
+Route::get('alumno/json/{alumno}', [AlumnoController::class, 'get_alumn_json']);
+Route::get('expediente/create/{alumno}',  [ExpedienteController::class, 'create_with_student']);

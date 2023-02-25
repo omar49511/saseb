@@ -20,6 +20,7 @@
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Telefono</th>
+                    <th>Rol</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -31,6 +32,18 @@
                     <td>{{$user['surname']}}  {{$user['secondSurname']}}</td>
                     <td>{{$user['email']}}</td>
                     <td>{{$user['phone']}}</td>
+                    <td>
+                        {{-- color --}}
+                    
+                        @if ($user->roles->isNotEmpty())
+                            @foreach ($user->roles as $role)
+                                
+                                {{$role->name}}
+                                
+                            @endforeach
+                        @endif
+                        
+                    </td>
                     <td class="flex space-x-4">
                         <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="user/{{$user['id']}}/edit">
                             <i class='fa-solid fa-edit'></i>

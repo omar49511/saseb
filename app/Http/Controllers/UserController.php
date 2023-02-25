@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+use Spatie\Permission\Models\Role;
+
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:user.index')->only('index');
+        $this->middleware('permission:user.create')->only(['create','store']);
+        $this->middleware('permission:user.edit')->only(['edit','update']);
+        $this->middleware('permission:user.destroy')->only('destroy');
+    }
+    
     public function index()
     {
         //
@@ -27,7 +33,10 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('psicologos.create');
+
+        $roles = Role::all();
+        return view('psicologos.create',['roles'=>$roles]);
+        // return view('psicologos.create');
     }
 
     /**
@@ -55,6 +64,7 @@ class UserController extends Controller
         $user->phone = $request->telefono;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->assignRole($request->role);
         $user->save();
 
         return redirect('/user');
@@ -80,7 +90,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
-        return view('psicologos.edit',['user'=> $user]);
+        $roles = Role::all();
+        return view('psicologos.edit',['user'=> $user, 'roles'=>$roles]);
 
     }
 
@@ -99,7 +110,12 @@ class UserController extends Controller
         $user->secondSurname = $request->apellido2;
         $user->email = $request->email;
         $user->phone = $request->telefono;
-        
+        if(count($user->getRoleNames()) > 0){
+            $user->removeRole('Psicologo');
+            $user->removeRole('Admin');
+            $user->removeRole('SuperAdmin');
+        }
+        $user->assignRole($request->role);
         $user->save();
         return redirect('/user');
     }

@@ -37,6 +37,14 @@
                 <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " type="text" name="telefono" id="telefono" value="{{ $user->phone }}">
             </div>
         </div>
+        <div class="col-span-6 sm:col-span-6">
+            <label for="rol">Rol</label>
+            <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " name="role">
+                @foreach ($roles as $role)
+                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                @endforeach
+            </select>
+        </div>
     </div>
     <div class="grid grid-cols-6 gap-6 py-11">
         <div class="col-span-6 sm:col-span-3">

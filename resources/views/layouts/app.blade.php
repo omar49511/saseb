@@ -40,33 +40,37 @@
                 <li><a href="/dashboard">
                         <i class="fa-solid fa-house"></i>
                         <span class="link-name">Inicio</span>
-                    </a></li>
-                <li><a href="/alumno">
-                        <i class="fa-solid fa-user-graduate"></i>
-                        <span class="link-name">Alumnos</span>
                     </a>
                 </li>
-
+                @can('alumno.index')
+                    <li><a href="/alumno">
+                            <i class="fa-solid fa-user-graduate"></i>
+                            <span class="link-name">Alumnos</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('user.index')
                 <li>
                     <a href="/user">
                         <i class="fa-solid fa-users"></i>
                         <span class="link-name">Usuarios</span>
                     </a>
                 </li>
+                @endcan
+                @can('expediente.index')
                 <li><a href="/expediente">
                         <i class="fa-solid fa-folder-open"></i>
                         <span class="link-name">Expedientes</span>
                     </a>
                 </li>
-                <li><a href="">
+                @endcan
+                @can('reporte.index')
+                <li><a href="/reporte">
                         <i class="fa-solid fa-file"></i>
                         <span class="link-name">Reportes</span>
-                    </a></li>
-                <li><a href="">
-                        <i class="fas fa-cogs"></i>
-                        <span class="link-name"> Configuración </span></a>
+                    </a>
                 </li>
-
+                @endcan
             </ul>
 
             <ul class="logout-mode">

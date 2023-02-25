@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:alumno.index')->only('index');
+        $this->middleware('permission:alumno.create')->only(['create','store']);
+        $this->middleware('permission:alumno.edit')->only(['edit','update']);
+        $this->middleware('permission:alumno.destroy')->only('destroy');
+    }
+
     public function index()
     {
         //
@@ -84,8 +88,11 @@ class AlumnoController extends Controller
     {
         //
         // TODO: crear un nuevo metodo para regresar el alumno como json
-        $newAlumno = Alumno::find($alumno);
-        return response(json_encode($newAlumno),200)->header('Content-type','text/plain');
+    }
+
+    public function get_alumn_json(Alumno $alumno){
+        return response(json_encode($alumno),200)->header('Content-type','text/plain');
+
     }
 
     /**
