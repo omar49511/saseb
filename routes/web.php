@@ -33,6 +33,8 @@ Route::middleware('auth')->get('dashboard', function () {
 });
 Route::resource('user', UserController::class);
 Route::resource('alumno', AlumnoController::class);
+
+Route::get('expediente/print/{expediente}', [ ExpedienteController::class, 'print'] )->name('expediente.print');
 Route::resource('expediente', ExpedienteController::class);
 Route::resource('reporte', ReporteController::class);
 Route::get('alumno/json/{alumno}', [AlumnoController::class, 'get_alumn_json']);

@@ -127,4 +127,17 @@ class ExpedienteController extends Controller
         $expediente->delete();
         return redirect(route('expediente.index'))->with('eliminar', 'ok');
     }
+
+    /**
+     * Return the resource as a pdf
+     *
+     * @param  \App\Models\Expediente  $expediente
+     * @return \Illuminate\Http\Response
+     */
+    public function print($expediente){
+        // TODO
+        $expediente = Expediente::find($expediente);
+        return view('expedientes.print', ['expediente' => $expediente]);
+
+    }
 }

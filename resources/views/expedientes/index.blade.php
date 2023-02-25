@@ -38,18 +38,20 @@
                     <td>{{$expediente->user->name." ".$expediente->user->surname}}</td>
                     <td>{{$expediente->created_at}}</td>
                     <td class="flex space-x-4">
-                        <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="{{route('expediente.edit', ['expediente'=>$expediente])}}">
+                        <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="{{route('expediente.edit', ['expediente'=>$expediente])}}" title="Editar">
                             <i class='fa-solid fa-edit'></i>
                         </a>
                         <form method="POST" action="/expediente/{{$expediente->id}}" class="formulario-eliminar">
                             @method('DELETE')
                             @csrf
-                            <button type='submit' class='bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-3 rounded'>
+                            <button type='submit' class='bg-red-700 hover:bg-red-500 text-white font-bold py-2 px-3 rounded' title="Eliminar">
                                 <i class='fa-solid fa-trash-alt'></i>
                             </button>
                         </form>
-                        <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="expediente/{{$expediente['id']}}">
-                            <i class="fa fa-eye"></i>
+                        <a type='button' title="Ver" class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="expediente/{{$expediente['id']}}">
+                            <i class="fa fa-eye"></i></a>
+                        <a type='button' href="{{route('expediente.print', ['expediente'=>$expediente->id])}}" title="Imprimir" class='bg-green-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' >
+                            <i class="fa fa-print"></i>
                         </a>
                     </td>
                 </tr>
@@ -106,5 +108,6 @@
             }
         })
     });
+
 </script>
 @stop
