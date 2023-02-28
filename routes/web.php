@@ -37,5 +37,6 @@ Route::resource('alumno', AlumnoController::class);
 Route::get('expediente/print/{expediente}', [ ExpedienteController::class, 'print'] )->name('expediente.print');
 Route::resource('expediente', ExpedienteController::class);
 Route::resource('reporte', ReporteController::class);
+Route::get('reporte/print/{reporte}', [ ReporteController::class, 'print'] )->name('reporte.print');
 Route::get('alumno/json/{alumno}', [AlumnoController::class, 'get_alumn_json']);
 Route::get('expediente/create/{alumno}',  [ExpedienteController::class, 'create_with_student']);

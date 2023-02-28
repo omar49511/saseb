@@ -31,7 +31,7 @@ class ReporteController extends Controller
      */
     public function create()
     {
-        //
+        return view('reportes.create');
     }
 
     /**
@@ -43,6 +43,20 @@ class ReporteController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'user_id' => 'required',
+            'observaciones' => 'required',
+            'actividades' => 'required',
+        ]);
+
+        $reporte = new Reporte();
+        $reporte->user_id = $request->user_id;
+        $reporte->observaciones = $request->observaciones;
+        $reporte->actividades= $request->actividades;
+        $reporte->firma= $request->firma;
+
+        $reporte->save();
+        return redirect(route('reporte.index'));
     }
 
     /**
@@ -53,7 +67,7 @@ class ReporteController extends Controller
      */
     public function show(Reporte $reporte)
     {
-        //
+        return view('reportes.show', ['reporte'=>$reporte]);
     }
 
     /**
@@ -88,5 +102,20 @@ class ReporteController extends Controller
     public function destroy(Reporte $reporte)
     {
         //
+        $reporte->delete();
+        return redirect(route('reporte.index'))->with('eliminar', 'ok');
+    }
+
+     /**
+     * Return the resource as a pdf
+     *
+     * @param  \App\Models\Reporte  $reporte
+     * @return \Illuminate\Http\Response
+     */
+    public function print($reporte){
+        // TODO
+        $reporte = Reporte::find($reporte);
+        return view('reportes.print', ['reporte' => $reporte]);
+
     }
 }
