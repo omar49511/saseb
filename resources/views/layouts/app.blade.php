@@ -67,7 +67,7 @@
                 @can('reporte.index')
                 <li><a href="/reporte">
                         <i class="fa-solid fa-file"></i>
-                        <span class="link-name">Reportes</span>
+                        <span class="link-name">Reportes grupales</span>
                     </a>
                 </li>
                 @endcan

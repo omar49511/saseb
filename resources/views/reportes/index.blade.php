@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Reporte | Alumno
+    Reporte | Grupo
 @stop
 
 @section('css')
