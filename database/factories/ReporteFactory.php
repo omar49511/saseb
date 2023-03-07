@@ -21,7 +21,8 @@ class ReporteFactory extends Factory
         return [
             'user_id' => User::factory(),
             'actividades' => fake()->paragraph(2),
-            'observaciones' => fake()->paragraph(3)
+            'observaciones' => fake()->paragraph(3),
+            'grupo' => fake()->randomElement($array = array ('grupo1', 'grupo2','grupo3','grupo4'))
         ];
     }
 }

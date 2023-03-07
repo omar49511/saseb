@@ -8,18 +8,19 @@ use Illuminate\Http\Request;
 
 class ReporteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(){
+        $this->middleware('auth');
+        $this->middleware('permission:reporte.index')->only('index');
+        $this->middleware('permission:reporte.create')->only(['create','store']);
+        $this->middleware('permission:reporte.edit')->only(['edit','update']);
+        $this->middleware('permission:reporte.destroy')->only('destroy');
+    }
     public function index()
     {
-        /* if(auth()->user()->hasRole('Psicologo')){
+        if(auth()->user()->hasRole('Psicologo')){
              $reporte = Reporte::where('user_id',auth()->user()->id)->get();
              return view('reportes.index', ['reportes'=>$reporte]);
         }
-        */
         $reporte = Reporte::get();
         return view('reportes.index', ['reportes'=>$reporte]);
     }
@@ -45,12 +46,14 @@ class ReporteController extends Controller
         //
         $request->validate([
             'user_id' => 'required',
+            'grupo' => 'required',
             'observaciones' => 'required',
-            'actividades' => 'required',
+            'actividades' => 'required'
         ]);
 
         $reporte = new Reporte();
         $reporte->user_id = $request->user_id;
+        $reporte->grupo = $request->grupo;
         $reporte->observaciones = $request->observaciones;
         $reporte->actividades= $request->actividades;
         $reporte->firma= $request->firma;
@@ -78,7 +81,7 @@ class ReporteController extends Controller
      */
     public function edit(Reporte $reporte)
     {
-        //
+        return view('reportes.edit', ['reporte' => $reporte]);
     }
 
     /**
@@ -91,6 +94,18 @@ class ReporteController extends Controller
     public function update(Request $request, Reporte $reporte)
     {
         //
+        $request->validate([
+            'grupo' => 'required',
+            'observaciones' => 'required',
+            'actividades' => 'required'
+        ]);
+
+        $reporte->grupo = $request->grupo;
+        $reporte->observaciones = $request->observaciones;
+        $reporte->actividades= $request->actividades;
+
+        $reporte->save();
+        return redirect(route('reporte.index'));
     }
 
     /**

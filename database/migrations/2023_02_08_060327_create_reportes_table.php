@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id(); //num reporte
             $table->text('actividades');
             $table->text('observaciones');
+            $table->string('grupo');
             $table->unsignedBigInteger('user_id');
-            $table->text('firma')->nullable();
+            $table->string('firma')->nullable();
             $table->timestamps();
             $table->foreign("user_id")
                 ->references("id")
