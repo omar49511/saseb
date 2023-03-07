@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Reporte | Grupo
+    Reporte | Tabla de Reportes
 @stop
 
 @section('css')
@@ -22,15 +22,17 @@
                     <th>#ID</th>
                     <th>Nombre</th>
                     <th>Fecha</th>
+                    <th>Grupo atendido</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody id="tabla">
-            @foreach ($reportes as $reporte)
+                @foreach ($reportes as $reporte)
                 <tr>
                     <td>{{$reporte->id}}</td>
                     <td>{{$reporte->user->name." ".$reporte->user->surname}}</td>
                     <td>{{$reporte->created_at}}</td>
+                    <td>{{$reporte->grupo}}</td>
                     <td class="flex space-x-4">
                         <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="{{route('reporte.edit', ['reporte'=>$reporte])}}">
                             <i class='fa-solid fa-edit'></i>
@@ -47,7 +49,7 @@
                         </a>
                     </td>
                 </tr>
-            @endforeach
+                @endforeach
             </tbody>
         </table>
     </div>

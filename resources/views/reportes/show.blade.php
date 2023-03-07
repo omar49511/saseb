@@ -15,27 +15,26 @@
     </div>
     <div class="grid grid-cols-6 gap-6">
         <div class="col-span-6 sm:col-span-2 ">
-            <p  class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]">
+            <p class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm">
             <strong>Fecha: </strong> {{$reporte->created_at}}
             </p>
         </div>
     </div>
     <div class="col-span-6 sm:col-span-1">
             <p class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm">
-            <strong >REPORTE No: </strong>{{$reporte->id}}
+            <strong >Reporte No: </strong>{{$reporte->id}}
+            </p>
+    </div>
+    <div class="col-span-6 sm:col-span-1">
+            <p class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm">
+            <strong >Grupo: </strong>{{$reporte->grupo}}
             </p>
     </div>
     <div class="col-span-6 sm:col-span-4 ">
-            <p  class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]">
+            <p class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm">
             <strong>Nombre del responsable del informe: </strong> {{$reporte->firma; }}
             </p>
     </div>
-    <div class="col-span-6 sm:col-span-4 ">
-            <p  class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-0 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]">
-            <strong>Informo a usted las actividades desempeñadas el dia de hoy.</strong>
-            </p>
-    </div>
-    <hr class="border-solid border-4 border-gray-200">
     <h2 class="text-xl text-[#21434E] font-semibold">
         Actividades
     </h2>
@@ -46,8 +45,10 @@
                 {{$reporte->actividades}}
             </p>
         </div>
+    <h2 class="text-xl text-[#21434E] font-semibold">
+        Observaciones
+    </h2>
         <div class="col-span-6">
-            <label for="">Observaciones</label>
             <p
                 class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm">
                 {{$reporte->observaciones}}
