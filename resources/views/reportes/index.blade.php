@@ -47,6 +47,9 @@
                         <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="reporte/{{$reporte['id']}}">
                             <i class="fa fa-eye"></i>
                         </a>
+                        <a type='button' href="{{route('reporte.print', ['reporte'=>$reporte->id])}}" title="Imprimir" class='bg-green-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' >
+                            <i class="fa fa-print"></i>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
