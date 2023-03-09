@@ -29,8 +29,13 @@
             <div class="col-span-6 sm:col-span-1 ">
                 <label for="">Grupo</label>
                 <input type="text"
-                    class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]"
+                    class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E] @error('grupo') border-red-500 @enderror"
                     id="grupo" name="grupo">
+                @error('grupo')
+                <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                        {{$message}}
+                </span>
+                @enderror
             </div>
         </div>
         <hr class="border-solid border-4 border-gray-200">
