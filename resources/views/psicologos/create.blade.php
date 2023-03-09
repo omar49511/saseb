@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('contenido')
+@include('alumnos._validation')
 
 <form method="POST" action="/user" class="px-4 my-20 max-w-3xl mx-auto space-y-6">
     {{ csrf_field() }}
@@ -25,7 +26,12 @@
             <label for="email">Email</label>
             <div class="mt-1 flex rounded-md shadow-sm">
                 <span class="mt-1 inline-flex items-center rounded-l-md border-gray-400 bg-blue-500 px-3 text-sm text-white"><i class="fa-sharp fa-solid fa-envelope"></i></span>
-                <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " type="email" name="email" id="email" value="{{old('email')}}" required>
+                <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm @error('email') border-red-500 @enderror" type="email" name="email" id="email" value="{{old('email')}}" required>
+                @error('email')
+                <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                        {{$message}}
+                </span>
+                @enderror
             </div>
         </div>
         <div class="col-span-6 sm:col-span-6">
@@ -47,14 +53,19 @@
             <label for="password">Contraseña</label>
             <div class="mt-1 flex rounded-md shadow-sm">
                 <span class="mt-1 inline-flex items-center rounded-l-md border-gray-400 bg-blue-500 px-3 text-sm text-white"><i class="fa-solid fa-key"></i></span>
-                <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " type="password" name="password" id="password" required minlength="8">
+                <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm @error('password') border-red-500 @enderror" type="password" name="password" id="password" required minlength="8">
+                @error('password')
+                <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                        {{$message}}
+                </span>
+                @enderror
             </div>
         </div>
         <div class="col-span-6 sm:col-span-6">
             <label for="password">Confirmar Contraseña</label>
             <div class="mt-1 flex rounded-md shadow-sm">
                 <span class="mt-1 inline-flex items-center rounded-l-md border-gray-400 bg-blue-500 px-3 text-sm text-white"><i class="fa-solid fa-key"></i></span>
-                <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " type="password" name="password_confirmation" id="password_confirmation">
+                <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm @error('password') border-red-500 @enderror " type="password" name="password_confirmation" id="password_confirmation">
             </div>
         </div>
     </div>
