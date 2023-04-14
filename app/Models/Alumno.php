@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\City;
 
 class Alumno extends Model
 {
@@ -16,7 +17,7 @@ class Alumno extends Model
         "group",
         "shift",
         "gender",
-        "birthplace",
+        // "birthplace",
         "time_to_reside",
         "domicile",
         "home_phone",
@@ -30,4 +31,9 @@ class Alumno extends Model
     public function expedientes(){
         return $this->hasMany(Expediente::class);
     }
+    // La ciudad es ciudad de nacimiento
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
+
 }

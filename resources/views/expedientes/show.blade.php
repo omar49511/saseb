@@ -68,9 +68,14 @@
             <strong >Sexo: </strong>{{$expediente->alumno->gender}}
             </p>
         </div>
-        <div class="col-span-6 sm:col-span-4">
+        <div class="col-span-6 sm:col-span-2">
             <p class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm">
-            <strong>Lugar de nacimiento: </strong>{{$expediente->alumno->birthplace}}
+            <strong>Ciudad de nacimiento: </strong>{{$expediente->alumno->city->name}}
+            </p>
+        </div>
+        <div class="col-span-6 sm:col-span-2">
+            <p class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm">
+            <strong>Estado de nacimiento: </strong>{{$expediente->alumno->city->state->name}}
             </p>
         </div>
         <div class="col-span-6 sm:col-span-3">

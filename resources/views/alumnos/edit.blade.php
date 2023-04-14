@@ -28,6 +28,83 @@
     </div>
 </div>
 </form>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+
+<script>
+
+function selectState(){
+    var state_name = $("#estado").val();
+    var state_obj = $("#estados_dropdown")
+    console.log(state_obj.options);
+    setSelectedValue(state_obj, state_name);
+    loadCities.call(state_obj);
+}
+
+function loadCities() {
+    var estado_id = $(this).val();
+    url = '/estado/'+estado_id+'/get_all_ciudades';
+    if (estado_id) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                var options = '';
+                $.each(response, function(index, ciudad) {
+                    options += '<option value="' + ciudad.id + '">' + ciudad.name + '</option>';
+                });
+                $('#ciudades_dropdown').empty();
+                $('#ciudades_dropdown').append(options);
+                selectCity();
+            }
+        });
+    } else {
+        $('#ciudades_dropdown').html('<option value="">Seleccione una ciudad</option>');
+    }
+}
+
+function selectCity(){
+    var city_dropdown = $("#ciudades_dropdown");
+    city_name = $("#ciudad").val();
+    setSelectedValue(city_dropdown, city_name);
+}
+
+function setSelectedValue(selectObj, valueToSelect){
+    options = selectObj.children()
+    if (options){
+        for (var i = 0; i < options.length; i++) {
+            if(options[i].text == valueToSelect)
+            {
+                options[i].selected = true;
+                return;
+            }
+        }
+    }
+    else{
+        console.error('El objeto no tiene opciones.');
+        console.error(selectObj);
+    }
+}
+
+$(document).ready(function() {
+    $.ajax({
+        url: '{{ route("estado.ciudades",["estado"=>1]) }}',
+        type: 'GET',
+        // data: {estado_id: 0}
+        dataType: 'json',
+        success: function(response) {
+            var options = '';
+            $.each(response, function(index, ciudad) {
+                options += '<option value="' + ciudad.id + '">' + ciudad.name + '</option>';
+            });
+            $('#ciudades_dropdown').append(options);
+        }
+    });
+    $('#estados_dropdown').on('click', loadCities);
+    selectState();
+});
+    
+</script>
 
 @stop
 

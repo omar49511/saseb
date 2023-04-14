@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Expediente;
 use App\Models\User;
+use App\Models\City;
 use App\Models\Alumno;
 use Illuminate\Http\Request;
 
@@ -35,6 +36,8 @@ class ExpedienteController extends Controller
     {
         //
         $alumno = new Alumno();
+        $city = City::find(1);
+        $alumno->city_id = $city->id;
         return view('expedientes.create', ['alumno' => $alumno]);
     }
 

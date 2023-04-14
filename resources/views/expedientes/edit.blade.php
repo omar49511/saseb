@@ -91,11 +91,17 @@
                     class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->gender}}"
                     id="sexo" name="sexo" placeholder="Sexo">
             </div>
-            <div class="col-span-6 sm:col-span-4">
-                <label for="">Lugar de nacimiento</label>
+            <div class="col-span-6 sm:col-span-2">
+                <label for="">Ciudad de nacimiento</label>
                 <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->birthplace}}"
-                    id="lugar_nacimiento" name="lugar" placeholder="Lugar de nacimiento">
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->city->name}}"
+                    id="ciudad_nacimiento" name="ciudad_nacimiento" placeholder="Ciudad de nacimiento">
+            </div>
+            <div class="col-span-6 sm:col-span-2">
+                <label for="">Estado de nacimiento</label>
+                <input type="text" id="estado_nacimiento" name="estado_nacimiento" 
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
+                    value="{{$expediente->alumno->city->state->name}}"> 
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Dirección</label>

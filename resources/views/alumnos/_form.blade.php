@@ -74,7 +74,7 @@
             <option value="Femenino" {{ $alumno->gender == "Femenino" ? 'selected' : '' }}>Femenino</option>
         </select>
     </div>
-    <div class="col-span-6 sm:col-span-2">
+    {{-- <div class="col-span-6 sm:col-span-2">
         <label for="lugar_nacimiento">Lugar de nacimiento</label>
         <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
         @error('lugar_nacimiento')
@@ -86,7 +86,7 @@
                 {{$message}}
         </span>
         @enderror
-    </div>
+    </div> --}}
 	<div class="col-span-6 sm:col-span-2">
         <label for="tiempo_residir">Tiempo de residencia</label>
         <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
@@ -100,6 +100,27 @@
         </span>
         @enderror
     </div>
+
+    <div class="col-span-6 sm:col-span-3">
+        <label for="estados_dropdown" >Estado de nacimiento</label>
+        <select id="estados_dropdown">
+            @foreach ($states as $state)
+                <option value="{{$state->id}}">{{$state->name}}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="col-span-6 sm:col-span-3"> 
+        <label for="ciudades_dropdown">Ciudad de nacimiento</label>
+        <select id="ciudades_dropdown" name="ciudades_dropdown">
+            {{-- @foreach ($cities as $city) --}}
+                {{-- <option value="{{$city->id}}">{{$city->name}}</option> --}}
+            {{-- @endforeach --}}
+        </select>
+    </div>
+    
+    <input type="hidden" name="ciudad" id="ciudad" value="{{$alumno->city->name}}">
+    <input type="hidden" name="estado" id="estado" value="{{$alumno->city->state->name}}">
+    
     <div class="col-span-6 sm:col-span-6">
         <label for="domicilio">Domicilio</label>
         <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
@@ -113,7 +134,6 @@
         </span>
         @enderror
     </div>
-    
     <div class="col-span-6 sm:col-span-3">
         <label for="telefono_casa">Telefono de casa</label>
         <input class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm
