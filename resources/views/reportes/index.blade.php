@@ -47,6 +47,9 @@
                         <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="reporte/{{$reporte['id']}}">
                             <i class="fa fa-eye"></i>
                         </a>
+                        <a type='button' href="{{route('reporte.print', ['reporte'=>$reporte->id])}}" title="Imprimir" class='bg-green-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' >
+                            <i class="fa fa-print"></i>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
@@ -86,21 +89,23 @@
 @endif
 
 <script>
-    $('.formulario-eliminar').submit(function(e){
+    $(document).on('click', '.formulario-eliminar button[type=submit]', function(e){
         e.preventDefault();
+        var form = $(this).closest('form');
         Swal.fire({
-            title: '¿Estas seguro?',
+            title: '¿Estás seguro?',
             text: "¡No podrás revertir esto!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '¡Si, bórralo!'
+            confirmButtonText: '¡Sí, bórralo!'
         }).then((result) => {
             if (result.isConfirmed) {
-                this.submit();
+                form.submit();
             }
         })
     });
 </script>
+
 @stop

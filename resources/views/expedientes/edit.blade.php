@@ -15,17 +15,20 @@
         <div class="grid grid-cols-6 gap-6">
             <div class="col-span-6 sm:col-span-4 ">
                 <label for="">Atendió</label>
-                <input type="text"
+                <span class="block px-0 py-2.5 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]">
+                    {{ $expediente->user->name." ".$expediente->user->surname." ".$expediente->user->secondSurname}}
+                </span>
+                {{-- <input type="text"
                     class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]"
                     id="atendio" name="atendio" value="{{ $expediente->user->name." ".$expediente->user->surname." ".$expediente->user->secondSurname}}
-                    ">
+                    "> --}}
                 <input type="hidden" name="user_id" id="user_id" value="{{$expediente->user->id}}">
             </div>
             <div class="col-span-6 sm:col-span-2 ">
                 <label for="">Fecha</label>
-                <input type="date"
-                    class="py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]"
-                    id="fecha" name="fecha" value="{{$expediente->created_at}}">
+                <span class="block px-0 py-2.5 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#21434E]">
+                    {{$expediente->created_at}}
+                </span>
             </div>
         </div>
         <hr class="border-solid border-4 border-gray-200">
@@ -56,40 +59,40 @@
             </div>
             <div class="col-span-6 sm:col-span-2">
                 <label for="">Nombre del alumno</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->name}}"
-                    id="nombre" name="nombre" placeholder="Nombre del alumno">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->name}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-2">
                 <label for="">Apellido</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->lastname}}"
-                    id="apellido_paterno" name="apellidoPaterno" placeholder="Apellido paterno del alumno">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->lastname}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-1">
                 <label for="">Edad</label>
-                <input type="date"
-                    {{-- TODO: mostrar edad en lugar de fecha de nacimiento --}}
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " value="{{$expediente->alumno->birthdate}}"
-                    id="fecha_nacimiento" name="fechaNacimiento" placeholder="Fecha de nacimiento">
+                {{-- TODO: mostrar edad en lugar de fecha de nacimiento --}}
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->birthdate}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-1">
                 <label for="">Grupo</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->group}}"
-                    id="grupo" name="grupo" placeholder="Grupo">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->group}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-1">
                 <label for="">Turno</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->shift}}"
-                    id="turno" name="turno" placeholder="Turno">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->shift}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-1">
                 <label for="">Sexo</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->gender}}"
-                    id="sexo" name="sexo" placeholder="Sexo">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->gender}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-2">
                 <label for="">Ciudad de nacimiento</label>
@@ -105,39 +108,39 @@
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Dirección</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->domicile}}"
-                    id="direccion" name="direccion" placeholder="Dirección">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->domicile}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Tiempo de residencia</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->time_to_reside}}"
-                    id="tiempoResidencia" name="tiempoResidencia" placeholder="Tiempo de residencia">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->time_to_reside}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Teléfono de casa</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->home_phone}}"
-                    id="telefonoCasa" name="telefonoCasa" placeholder="Teléfono de Casa">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->home_phone}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Teléfono Celular</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->cell_phone}}"
-                    id="celular" name="telefonoCelular" placeholder="Teléfono celular">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->cell_phone}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Religión</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->religion}}"
-                    id="religion" name="religion" placeholder="Religión">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->religion}}
+                </span>
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Ocupación</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->work}}"
-                    id="ocupacion" name="ocupacion" placeholder="N/A">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->work}}
+                </span>
             </div>
         </div>
         <hr class="border-solid border-4 border-gray-200">
