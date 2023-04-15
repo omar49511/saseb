@@ -71,9 +71,9 @@
     </div>
     <div class="grid grid-cols-6 gap-6 py-11">
         <div class="col-span-6 sm:col-span-3">
-            <button class="w-full border-2 border-blue-500 hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded-full" type="submit">Guardar</button>
+            <button class="w-full border-2 border-blue-500 hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 px-4 rounded" type="submit">Guardar</button>
         </div>
-        <div class="col-span-6 sm:col-span-3 border-2 border-red-500 hover:bg-red-700 hover:text-white text-red-500 font-bold py-2 px-4 rounded-full text-center">
+        <div class="col-span-6 sm:col-span-3 border-2 border-red-500 hover:bg-red-700 hover:text-white text-red-500 font-bold py-2 px-4 rounded text-center">
             <a  class=''href="{{ route('user.index') }}">
                 Cancelar 
             </a>

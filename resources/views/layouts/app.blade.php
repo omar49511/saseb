@@ -91,10 +91,6 @@
     <section class="dashboard" id="main-container">
         <div class="top">
             <i class="fa-solid fa-bars sidebar-toggle"></i>
-            <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="Buscar aqui...">
-            </div>
         </div>
 
         <!-- Page Content -->

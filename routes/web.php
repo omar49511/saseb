@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\DashboardController;
 use Laravel\Jetstream\Rules\Role;
 
 /*
@@ -27,10 +28,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth'])->get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::middleware('auth')->get('dashboard', function () {
-    return view('admin.dashboard');
-});
 Route::resource('user', UserController::class);
 Route::resource('alumno', AlumnoController::class);
 

@@ -8,8 +8,8 @@
 
 @section('contenido')
 
-    <div class="overflow-hidden bg-blue-700 sm:rounded-t-lg p-10">
-        <a href="{{ route('user.create') }}" class="border-2 border-white hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full">Registrar Usuario</a>
+    <div class="overflow-hidden bg-gray-800 sm:rounded-t-lg p-10">
+        <a href="{{ route('user.create') }}" class="inline-block rounded bg-neutral-50 px-6 pb-2 pt-2.5 font-medium uppercase leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#cbcbcb] transition duration-150 ease-in-out hover:bg-neutral-100 hover:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:bg-neutral-100 focus:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(203,203,203,0.3),0_4px_18px_0_rgba(203,203,203,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(251,251,251,0.3)] dark:hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)] dark:active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.1),0_4px_18px_0_rgba(251,251,251,0.05)]">Registrar Usuario</a>
     </div>
     <div class="px-4 mt-5 mb-20  mx-auto space-y-6">
         <table class='table table-striped table-hover' width="100%" id="tabla">
@@ -45,6 +45,7 @@
                         
                     </td>
                     <td class="flex space-x-4">
+                        <div class="flex gap-2">
                         <a type='button' class='bg-blue-700 hover:bg-blue-500 text-white font-bold py-2 px-3 rounded' href="user/{{$user['id']}}/edit">
                             <i class='fa-solid fa-edit'></i>
                         </a>
@@ -55,6 +56,7 @@
                                 <i class='fa-solid fa-trash-alt'></i>
                             </button>
                         </form>
+                        </div>
                         
                     </td>
                 </tr>
@@ -89,28 +91,30 @@
         <script>
             Swal.fire(
                 '¡Eliminado!',
-                'El usuario ha sido eliminado.',
+                'El expediente ha sido eliminado.',
                 'success'
             )
         </script>
 @endif
 
 <script>
-    $('.formulario-eliminar').submit(function(e){
+    $(document).on('click', '.formulario-eliminar button[type=submit]', function(e){
         e.preventDefault();
+        var form = $(this).closest('form');
         Swal.fire({
-            title: '¿Estas seguro?',
+            title: '¿Estás seguro?',
             text: "¡No podrás revertir esto!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '¡Si, bórralo!'
+            confirmButtonText: '¡Sí, bórralo!'
         }).then((result) => {
             if (result.isConfirmed) {
-                this.submit();
+                form.submit();
             }
         })
     });
 </script>
+
 @stop
