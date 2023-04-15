@@ -60,14 +60,13 @@
 
             <div class="col-span-6 sm:col-span-3">
                 <input
-                    class="w-full border border-blue-500 hover:bg-blue-600 bg-blue-200 hover:text-white text-blue-500 font-bold py-2 rounded"
+                    class="w-full border-2 border-blue-500 hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 rounded"
                     type="submit" class="form-control" value="Modificar reporte">
             </div>
-            <div class="col-span-6 sm:col-span-3">
-                <a class="text-center w-full border border-red-500 hover:bg-red-600 bg-red-200 hover:text-white text-red-500 font-bold py-2 rounded"
+            <div class="col-span-6 sm:col-span-3 grid">
+                <a href="{{ route('reporte.index') }}" class="text-center col-span-6 border-2 border-red-500 hover:bg-red-700 hover:text-white text-red-500 font-bold py-2  rounded"
                     type="submit" class="form-control">Cancelar</a>
             </div>
-
         </div>
     </form>
 
