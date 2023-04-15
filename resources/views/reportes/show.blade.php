@@ -54,23 +54,10 @@
                 {{$reporte->observaciones}}
                 </p>
         </div>
-        {{-- <div class="col-span-6 sm:col-span-3">
-            <a  href="{{route('reporte.edit', ['reporte'=>$reporte])}}">
-                <button
-                class="w-full border border-blue-500 hover:bg-blue-600 bg-blue-200 hover:text-white text-blue-500 font-bold py-2 rounded"
-                 class="form-control" >Editar</button></a>
-        </div>
-        <div class="col-span-3 sm:col-span-2">
-        <form  method="POST" action="/reporte/{{$reporte->id}}" class="formulario-eliminar">
-        @method('DELETE')
-        @csrf
-            <button class="text-center w-full border border-red-500 hover:bg-red-600 bg-red-200 hover:text-white text-red-500 font-bold py-2 rounded"
-                type="submit" class="form-control">Borrar</button>
-        </form>
-        </div> --}}
-        <div class="col-span-3 sm:col-span-1">
-            <a href="{{route('reporte.print', ['reporte'=>$reporte->id])}}">
-            <button  class="text-center w-full border border-green-500 hover:bg-green-600 bg-green-200 hover:text-white text-green-500 font-bold py-2 rounded">Imprimir</button></a>
+
+        <div class="col-span-6 sm:col-span-1 grid">
+            <a href="{{route('reporte.index')}}" class="text-center col-span-6 border-2 border-red-500 hover:bg-red-700 hover:text-white text-red-500 font-bold py-2  rounded"
+                class="form-control">Cancelar</a>
         </div>
     </div>
 @stop
