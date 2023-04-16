@@ -96,15 +96,19 @@
             </div>
             <div class="col-span-6 sm:col-span-2">
                 <label for="">Ciudad de nacimiento</label>
-                <input type="text"
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->city->name}}"
-                    id="ciudad_nacimiento" name="ciudad_nacimiento" placeholder="Ciudad de nacimiento">
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->city->name}}
+                </span>
+                {{-- <input type="text"
+                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="
+                    id="ciudad_nacimiento" name="ciudad_nacimiento" placeholder="Ciudad de nacimiento"> --}}
             </div>
             <div class="col-span-6 sm:col-span-2">
                 <label for="">Estado de nacimiento</label>
-                <input type="text" id="estado_nacimiento" name="estado_nacimiento" 
-                    class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm"
-                    value="{{$expediente->alumno->city->state->name}}"> 
+                <span class="block px-3 py-2 sm:text-sm leading-normal  bg-white border border-gray-400 rounded-md shadow transition duration-150 ease-in-out focus:outline-none focus:shadow-outline-blue focus:border-blue-400">
+                    {{$expediente->alumno->city->state->name}}
+                </span>
+                {{-- <input type="text" id="estado_nacimiento" name="estado_nacimiento" class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm" value="{{$expediente->alumno->city->state->name}}">  --}}
             </div>
             <div class="col-span-6 sm:col-span-3">
                 <label for="">Dirección</label>
