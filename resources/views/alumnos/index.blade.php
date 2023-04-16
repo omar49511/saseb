@@ -87,46 +87,21 @@
 <script src="https://cdn.datatables.net/responsive/2.4.0/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap5.min.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $('#tabla').DataTable({
-            responsive: true,
-            language : {
-                url: "{{asset('Datatable/es-ES.json')}}"
-            }
-        });
-    });
-</script>
+
+
+@livewireScripts
+<script src="{{ asset('js/dataTable.js') }}"></script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @if(session('eliminar') == 'ok')
-        <script>
-            Swal.fire(
-                '¡Eliminado!',
-                'El expediente ha sido eliminado.',
-                'success'
-            )
-        </script>
+
+@livewireScripts
+<script src="{{ asset('js/eliminadoMensaje.js') }}"></script>
 @endif
 
-<script>
-    $(document).on('click', '.formulario-eliminar button[type=submit]', function(e){
-        e.preventDefault();
-        var form = $(this).closest('form');
-        Swal.fire({
-            title: '¿Estás seguro?',
-            text: "¡No podrás revertir esto!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: '¡Sí, bórralo!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                form.submit();
-            }
-        })
-    });
-</script>
+@livewireScripts
+<script src="{{ asset('js/confirmacionSwalFire.js') }}"></script>
+
+
 @stop

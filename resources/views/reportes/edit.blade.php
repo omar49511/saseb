@@ -74,7 +74,10 @@
 
 @section('js')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
-<script>
+
+@livewireScripts
+<script src="{{ asset('js/fecha.js') }}"></script>
+{{-- <script>
     $(document).ready(function () {
         var now = new Date();
         $('#fecha').val(return_string_date(now)); 
@@ -87,5 +90,5 @@
         var today = date.getFullYear()+"-"+(month)+"-"+(day) ;
         return today;
     }
-</script>
+</script> --}}
 @stop

@@ -23,7 +23,6 @@
 
 <script>
 
-console.log('hola');
 function loadImage(url) {
     return new Promise(resolve => {
         const xhr = new XMLHttpRequest();

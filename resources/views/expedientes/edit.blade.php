@@ -190,54 +190,8 @@
 
 @section('js')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
-<script>
-    $(document).ready(function () {
-        var now = new Date();
-        $('#fecha').val(return_string_date(now)); 
-       
-    });
 
-    function search_student_by_id(){
+@livewireScripts
+<script src="{{ asset('js/buscarUsuarioEnExpediente.js') }}"></script>
 
-        var id = $("#alumno_id").val();
-
-        $.ajax({
-            url: "/alumno/"+id,
-            method: "GET",
-            data: {
-                _token: $('input[name="_token"]').val()
-            },
-            error: function(response) {
-                alert(response);
-            },
-            success: function (response) {
-                var array = JSON.parse(response);
-                $("#nombre").val(array[0].name);
-                $("#apellido_paterno").val(array[0].lastname);
-                $("#fecha_nacimiento").val(array[0].birthdate.split("T")[0]);
-				$("#grupo").val(array[0].group);
-				$("#turno").val(array[0].shift);
-                $("#sexo").val(array[0].gender);
-                $("#lugar_nacimiento").val(array[0].birthplace);
-                console.log(array[0].birthdate);
-                $("#direccion").val(array[0].domicile);
-				$("#tiempoResidencia").val(array[0].time_to_reside);
-                $("#telefonoCasa").val(array[0].home_phone);
-                $("#celular").val(array[0].cell_phone);
-                $('#religion').val(array[0].religion);
-                $('#ocupacion').val(array[0].work);
-                $('#tiempoResidencia').val(array[0].time_to_reside);
-                $('#grupo').val(array[0].group);
-                $('#turno').val(array[0].shift);
-            }
-        });
-    }
-
-    function return_string_date(date){
-        var day = ("0" + date.getDate()).slice(-2);
-        var month = ("0" + (date.getMonth() + 1)).slice(-2);
-        var today = date.getFullYear()+"-"+(month)+"-"+(day) ;
-        return today;
-    }
-</script>
 @stop
