@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Alumno;
+use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,13 +27,14 @@ class AlumnoFactory extends Factory
             'group'=> $this->faker->randomElement($array = array ('grupo1', 'grupo2','grupo3','grupo4')),
             'shift'=> $this->faker->randomElement($array = array ('Matutino', 'Vespertino')),
             'gender' => $this->faker->randomElement($array = array ('Masculino', 'Femenino')),
-            'birthplace' => $this->faker->country(),
+            // 'birthplace' => $this->faker->country(),
             'time_to_reside' => $this->faker->numerify('## años residiendo en la ciudad'),
             'domicile' => $this->faker->address(),
             'home_phone' => $this->faker->phoneNumber(),
             'cell_phone' => $this->faker->tollFreePhoneNumber(),
             'work' => $this->faker->randomElement($array = array ('si', 'no')),
             'religion'=> $this->faker->randomElement($array = array ('Cristianismo', 'Islam','Sin religión','Hinduismo','Budismo')),
+            'city_id' => $this->faker->numberBetween(1,2463)
         ];
     }
 

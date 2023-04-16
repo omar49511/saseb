@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use App\Models\City;
 use Illuminate\Http\Request;
+use App\Models\State;
+use PhpParser\Builder\Class_;
 
 class AlumnoController extends Controller
 {
@@ -32,7 +35,14 @@ class AlumnoController extends Controller
     {
         //
         $alumno = new Alumno();
-        return view('alumnos.create',['alumno'=>$alumno]);
+
+        $city = City::find(1);
+        $alumno->city_id = $city->id;
+
+        $states = new State();
+        $states = $states->all();
+
+        return view('alumnos.create',['alumno'=>$alumno,'states'=>$states]);
     }
 
     /**
@@ -49,12 +59,13 @@ class AlumnoController extends Controller
 			'grupo' => 'required',
 			'turno' => 'required',
             'genero' => 'required',
-            'lugar_nacimiento' => 'required',
+            // 'lugar_nacimiento' => 'required',
 			'tiempo_residir' => 'required',
             'domicilio' => 'required',
             'telefono_casa' => 'required',
             'telefono_celular' => 'required',
 			'religion' => 'required',
+            'ciudades_dropdown'=>'required'
         ]);
         //
         $alumno = new Alumno;
@@ -65,13 +76,14 @@ class AlumnoController extends Controller
 		$alumno->group = $request->grupo;
 		$alumno->shift = $request->turno;
         $alumno->gender=$request->genero;
-        $alumno->birthplace=$request->lugar_nacimiento;
+        // $alumno->birthplace=$request->lugar_nacimiento;
 		$alumno->time_to_reside = $request->tiempo_residir;
         $alumno->domicile=$request->domicilio;
         $alumno->home_phone=$request->telefono_casa;
         $alumno->cell_phone=$request->telefono_celular;
 		$alumno->religion=$request->religion;
 		$alumno->work=$request->trabajo;
+        $alumno->city_id = $request->ciudades_dropdown;
         
         $alumno->save();
 
@@ -91,8 +103,15 @@ class AlumnoController extends Controller
     }
 
     public function get_alumn_json(Alumno $alumno){
-        return response(json_encode($alumno),200)->header('Content-type','text/plain');
+        $alumno_array = $alumno->toArray();
+        $city_array = $alumno->city->toArray();
+        $alumno_array["city"] = $city_array;
+        $state_array = $alumno->city->state->toArray();
+        $alumno_array["city"]["state"] = $state_array;
+        unset($alumno_array["city"]["state_id"]);
+        unset($alumno_array["city_id"]);
 
+        return response(json_encode($alumno_array),200)->header('Content-type','text/plain');
     }
 
     /**
@@ -104,7 +123,9 @@ class AlumnoController extends Controller
     public function edit(Alumno $alumno)
     {
         //
-        return view('alumnos.edit',['alumno'=> $alumno]);
+        $states = new State();
+        $states = $states->all();
+        return view('alumnos.edit',['alumno'=> $alumno, 'states'=>$states]);
     }
 
     /**
@@ -124,7 +145,7 @@ class AlumnoController extends Controller
 			'grupo' => 'required',
 			'turno' => 'required',
             'genero' => 'required',
-            'lugar_nacimiento' => 'required',
+            // 'lugar_nacimiento' => 'required',
 			'tiempo_residir' => 'required',
             'domicilio' => 'required',
             'telefono_casa' => 'required',
@@ -138,7 +159,7 @@ class AlumnoController extends Controller
 		$alumno->group = $request->grupo;
 		$alumno->shift = $request->turno;
         $alumno->gender=$request->genero;
-        $alumno->birthplace=$request->lugar_nacimiento;
+        // $alumno->birthplace=$request->lugar_nacimiento;
 		$alumno->time_to_reside = $request->tiempo_residir;
         $alumno->domicile=$request->domicilio;
         $alumno->home_phone=$request->telefono_casa;

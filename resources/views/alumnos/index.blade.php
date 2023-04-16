@@ -24,7 +24,8 @@
 					<th>Grupo</th>
 					<th>Turno</th>
                     <th>Sexo</th>
-                    <th>Lugar de nacimiento</th>
+                    <th>Ciudad de nacimiento</th>
+                    <th>Estado de naciomiento</th>
 					<th>Tiempo de residencia</th>
                     <th>Domicilio</th>
                     <th>Telefono casa</th>
@@ -46,7 +47,8 @@
 					<td>{{$alumno["group"]}}</td>
 					<td>{{$alumno["shift"]}}</td> 					
                     <td>{{$alumno["gender"]}}</td>
-                    <td>{{$alumno["birthplace"]}}</td>
+                    <td>{{$alumno->city->name}}</td>
+                    <td>{{$alumno->city->state->name}}</td>
 					<td>{{$alumno["time_to_reside"]}}</td>
                     <td>{{$alumno["domicile"]}}</td>
                     <td>{{$alumno["home_phone"]}}</td>
@@ -93,7 +95,11 @@
             responsive: true,
             language : {
                 url: "{{asset('Datatable/es-ES.json')}}"
-            }
+            },
+            columnDefs:[{
+                type:"num",
+                targets: 0
+            }]
         });
     });
 </script>

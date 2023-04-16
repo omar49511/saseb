@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('contenido')
 
 @include('alumnos._validation')
@@ -26,5 +27,52 @@
         </div>
     </div>
 </form>
+
+@stop
+@section('js')
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script> 
+<script>
+
+$(document).ready(function() {
+    $.ajax({
+        url: '{{ route("estado.ciudades",["estado"=>1]) }}',
+        type: 'GET',
+        // data: {estado_id: 0}
+        dataType: 'json',
+        success: function(response) {
+            var options = '';
+            $.each(response, function(index, ciudad) {
+                options += '<option value="' + ciudad.id + '">' + ciudad.name + '</option>';
+            });
+            $('#ciudades_dropdown').append(options);
+        }
+    });
+
+$('#estados_dropdown').on('click', function() {
+        var estado_id = $(this).val();
+        url = '/estado/'+estado_id+'/get_all_ciudades';
+        console.log(url);
+        if (estado_id) {
+            $.ajax({
+                url: url,
+                type: 'GET',
+                // data: {estado_id: estado_id},
+                dataType: 'json',
+                success: function(response) {
+                    var options = '';
+                    $.each(response, function(index, ciudad) {
+                        options += '<option value="' + ciudad.id + '">' + ciudad.name + '</option>';
+                    });
+                    $('#ciudades_dropdown').empty();
+                    $('#ciudades_dropdown').append(options);
+                }
+            });
+        } else {
+            $('#ciudades_dropdown').html('<option value="">Seleccione una ciudad</option>');
+        }
+    });
+});
+    
+</script>
 
 @stop
