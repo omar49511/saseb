@@ -6,7 +6,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\StateController;
 use App\Http\Controllers\DashboardController;
+
 use Laravel\Jetstream\Rules\Role;
 
 /*
@@ -37,5 +39,6 @@ Route::get('expediente/print/{expediente}', [ ExpedienteController::class, 'prin
 Route::resource('expediente', ExpedienteController::class);
 Route::resource('reporte', ReporteController::class);
 Route::get('reporte/print/{reporte}', [ ReporteController::class, 'print'] )->name('reporte.print');
-Route::get('alumno/json/{alumno}', [AlumnoController::class, 'get_alumn_json']);
-Route::get('expediente/create/{alumno}',  [ExpedienteController::class, 'create_with_student']);
+Route::get('alumno/json/{alumno}', [AlumnoController::class, 'get_alumn_json'])->name('alumno.json');
+Route::get('expediente/create/{alumno}',  [ExpedienteController::class, 'create_with_student'])->name('expediente.crear.alumno');
+Route::get('estado/{estado}/get_all_ciudades', [StateController::class,'cities'])->name('estado.ciudades');

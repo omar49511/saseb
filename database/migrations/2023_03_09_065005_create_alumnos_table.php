@@ -21,13 +21,19 @@ return new class extends Migration
             $table->string("group");
             $table->string("shift");
             $table->string("gender");
-            $table->string("birthplace");
+            // $table->string("birthplace");
             $table->string("time_to_reside");
             $table->string("domicile");
             $table->string("home_phone");
             $table->string("cell_phone");
             $table->string("work")->nullable();
             $table->string("religion");
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')
+                ->references('id')
+                ->on('cities')  
+                ->onDelete("cascade")
+                ->onUpdate("cascade");
             $table->timestamps();
         });
     }
