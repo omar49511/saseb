@@ -6,48 +6,41 @@ on:
         
   workflow_dispatch:
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Configurar ambiente PHP
-      uses: shivammathur/setup-php@2.25.1
-      with:
-        php-version: '8.0'
-        extensions: |
-          pdo_sqlite
-          sqlite3
-          curl
-          dom
-          mbstring
-          zip
-          exif
-          ffi
-    - name: Configurar ambiente Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '16.x'
-    - name: Instalar dependencias de Composer
-      run: composer install
-    - name: Limpiar cache de Laravel
-      run: php artisan cache:clear
-    - name: Limpiar configuración de Laravel
-      run: php artisan config:clear
-    - name: Instalar dependencias de NPM
-      run: npm install
-    - name: Compilar assets de Laravel
-      run: npm run build
-    - name: Desplegar con FTP
+
+    - name: Setup Docker
+      uses: docker/setup-buildx-action@v2.5.0
+
+    - name: Build Docker Image
+      run: docker build -t myapp .
+
+    - name: Install Dependencies
+      run: docker run --rm -v $PWD:/app -w /app myapp composer install --no-interaction --no-progress --prefer-dist
+
+    - name: Clear Laravel Cache
+      run: docker run --rm -v $PWD:/app -w /app myapp php artisan cache:clear
+
+    - name: Clear Laravel Config Cache
+      run: docker run --rm -v $PWD:/app -w /app myapp php artisan config:clear
+
+    - name: Generate Laravel Mix
+      run: docker run --rm -v $PWD:/app -w /app myapp npm run dev
+
+    - name: Deploy with FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /public_html # La carpeta en la que se encuentra tu sitio web en el servidor
-        local-dir: ./public # La carpeta donde se encuentran los archivos compilados
+        local-dir: ./public/
+        remote-dir: /public_html/
+        delete-removed: true
         exclude: |
           **/.vscode/*
           **/README.md
