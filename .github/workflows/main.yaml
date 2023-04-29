@@ -30,7 +30,7 @@ jobs:
       run: docker run --rm -v $PWD:/app -w /app myapp php artisan config:clear
 
     - name: Generate Laravel Mix
-      run: docker run --rm -v $PWD:/app -w /app myapp npm run dev
+      run: docker run --rm -v $PWD:/app -w /app myapp npm run build
 
     - name: Deploy with FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
