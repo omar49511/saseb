@@ -30,7 +30,7 @@ COPY . /app
 RUN composer install --no-interaction --no-progress --prefer-dist
 
 # Generate Laravel Mix
-RUN npm install && npm run dev
+RUN npm install
 
 # Expose port 80
 EXPOSE 80
