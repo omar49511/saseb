@@ -20,17 +20,17 @@ jobs:
     - name: Build Docker Image
       run: docker build -t myapp .
 
-    - name: Install Dependencies
-      run: docker run --rm -v $PWD:/app -w /app myapp composer install --no-interaction --no-progress --prefer-dist
+ #   - name: Install Dependencies
+ #     run: docker run --rm -v $PWD:/app -w /app myapp composer install --no-interaction --no-progress --prefer-dist
 
-    - name: Clear Laravel Cache
-      run: docker run --rm -v $PWD:/app -w /app myapp php artisan cache:clear
+#    - name: Clear Laravel Cache
+#      run: docker run --rm -v $PWD:/app -w /app myapp php artisan cache:clear
 
-    - name: Clear Laravel Config Cache
-      run: docker run --rm -v $PWD:/app -w /app myapp php artisan config:clear
+#    - name: Clear Laravel Config Cache
+#      run: docker run --rm -v $PWD:/app -w /app myapp php artisan config:clear
 
-    - name: Generate Laravel Mix
-      run: docker run --rm -v $PWD:/app -w /app myapp npm run build
+#    - name: Generate Laravel Mix
+#      run: docker run --rm -v $PWD:/app -w /app myapp npm run build
 
     - name: Deploy with FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
