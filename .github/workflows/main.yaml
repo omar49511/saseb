@@ -21,7 +21,7 @@ jobs:
       run: docker build -t myapp .
       
     - name: Export compiled assets
-      run: docker cp myapp .
+      run: docker cp myapp:/ .
 
     - name: Deploy with FTP
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
