@@ -29,6 +29,12 @@ COPY . /app
 # Install application dependencies
 RUN composer install --no-interaction --no-progress --prefer-dist
 
+# Clear Laravel Cache
+RUN php artisan cache:clear
+
+# Clear Laravel Config Cache
+RUN php artisan config:clear
+
 # Generate Laravel Mix
 RUN npm install && npm run build
 
