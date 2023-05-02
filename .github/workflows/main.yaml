@@ -20,6 +20,9 @@ jobs:
     - name: Build Docker Image
       run: docker build -t myapp .
       
+    - name: Rename the docker image
+      run: docker run -d --name myapp myapp
+      
     - name: Export compiled assets
       run: docker cp myapp:/app/. .
 
