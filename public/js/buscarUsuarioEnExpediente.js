@@ -15,7 +15,11 @@ function search_student_by_id(){
             _token: $('input[name="_token"]').val()
         },
         error: function(response) {
-            alert(response);
+            Swal.fire(
+                '¡Error!',
+                'El alumno no existe.',
+                'error'
+            )
         },
         success: function (response) {
             var array = JSON.parse(response);
