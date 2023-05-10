@@ -110,9 +110,15 @@
     @livewireScripts
     <script src="{{ asset('js/sidebar.js') }}"></script>
 
+    <footer>
+        <p  class="text-center text-white" >SASEB 2023 - Versión {{ config('app.app_version') }}</p>
+    </footer>
+
     @yield('js')
 
 
 </body>
+
+
 
 </html>
