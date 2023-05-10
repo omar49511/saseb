@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 use Spatie\Permission\Models\Role;
 
@@ -52,7 +54,7 @@ class UserController extends Controller
         //     'name'=>'required|max:255',
              'email'=>'required|unique:users|email|max:255',
              'password'=>'required|between:8,255|confirmed',
-             'password_confirmation'=>'required',
+             'password_confirmation'=>'required'
         ]);
 
 
@@ -104,6 +106,26 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+
+        $request->validate([
+            //     'name'=>'required|max:255',
+            'email' => [
+                'required',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($user->id),
+            ],
+            ]);
+
+         // Validar la contraseña
+        $request->validate([
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        // Si se proporcionó una nueva contraseña, cifrarla y actualizarla
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
 
         $user->name = $request->nombre;
         $user->surname = $request->apellido;
