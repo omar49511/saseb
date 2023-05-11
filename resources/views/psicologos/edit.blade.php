@@ -69,7 +69,7 @@
             <label for="password">Confirmar Contraseña</label>
             <div class="mt-1 flex rounded-md shadow-sm">
                 <span class="mt-1 inline-flex items-center rounded-l-md border-gray-400 bg-blue-500 px-3 text-sm text-white"><i class="fa-solid fa-key"></i></span>
-                <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm @if($errors->has('password')) border-red-500 @endif " type="password" name="password_confirmation" id="password_confirmation">
+                <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm @if($errors->has('password')) border-red-500 @endif " type="password" name="password_confirmation" id="password_confirmation" minlength="8">
             </div>
         </div>
     </div>

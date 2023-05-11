@@ -119,7 +119,7 @@ class UserController extends Controller
 
          // Validar la contraseña
         $request->validate([
-            'password' => 'nullable|string|min:8|confirmed',
+            'password' => 'nullable|string|min:8|required_with:password_confirmation|confirmed',
         ]);
 
         // Si se proporcionó una nueva contraseña, cifrarla y actualizarla
