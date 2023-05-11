@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 use Spatie\Permission\Models\Role;
 
@@ -119,12 +120,17 @@ class UserController extends Controller
 
          // Validar la contraseña
         $request->validate([
-            'password' => 'nullable|string|min:8|confirmed',
+            'password' => 'nullable|string|min:8|required_with:password_confirmation|confirmed',
         ]);
 
         // Si se proporcionó una nueva contraseña, cifrarla y actualizarla
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
+        }
+
+        // Verificar que el usuario actual no esté editando su propio rol
+        if ($user->id == Auth::user()->id && $request->role != $user->getRoleNames()->first()) {
+            abort(403, 'No puede editar su propio rol mientras este conectado.');
         }
 
         $user->name = $request->nombre;
