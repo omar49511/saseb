@@ -75,7 +75,7 @@
 <script src="https://cdn.datatables.net/responsive/2.4.0/js/responsive.bootstrap5.min.js"></script>
 
 @livewireScripts
-<script src="{{ asset('js/confirmacionSwalFire.js') }}"></script>
+<script src="{{ asset('js/dataTable.js') }}"></script>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
