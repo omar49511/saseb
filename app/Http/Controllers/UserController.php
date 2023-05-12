@@ -128,9 +128,12 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
         }
 
-        // Verificar que el usuario actual no esté editando su propio rol
-        if ($user->id == Auth::user()->id && $request->role != $user->getRoleNames()->first()) {
-            abort(403, 'No puede editar su propio rol mientras este conectado.');
+        // Verificar si el rol ha sido modificado
+        if ($request->has('role') && Role::find($request->role)->name != $user->getRoleNames()->first()) {
+            // Verificar que el usuario actual no esté editando su propio rol
+            if ($user->id == Auth::user()->id) {
+                abort(403, 'No puede editar su propio rol mientras este conectado.');
+            }
         }
 
         $user->name = $request->nombre;
