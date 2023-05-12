@@ -46,7 +46,9 @@
             <label for="rol">Rol</label>
             <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " name="role">
                 @foreach ($roles as $role)
-                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                <option value="{{ $role->id }}" @if ($user->getRoleNames()->first() == $role->name)
+                   selected="selected" 
+                @endif>{{ $role->name }}</option>
                 @endforeach
             </select>
         </div>
