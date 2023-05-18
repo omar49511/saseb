@@ -30,7 +30,6 @@ function search_student_by_id(){
             $("#turno").val(array.shift);
             $("#sexo").val(array.gender);
             $("#lugar_nacimiento").val(array.birthplace);
-            console.log(array.birthdate);
             $("#direccion").val(array.domicile);
             $("#tiempoResidencia").val(array.time_to_reside);
             $("#telefonoCasa").val(array.home_phone);
@@ -40,6 +39,8 @@ function search_student_by_id(){
             $('#tiempoResidencia').val(array.time_to_reside);
             $('#grupo').val(array.group);
             $('#turno').val(array.shift);
+            $('#ciudad_nacimiento').val(array.city.name);
+            $('#estado_nacimiento').val(array.city.state.name);
         }
     });
 }
