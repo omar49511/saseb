@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Facade;
 
 return [
 
+    'app_version'=>'0.1',
     /*
     |--------------------------------------------------------------------------
     | Application Name

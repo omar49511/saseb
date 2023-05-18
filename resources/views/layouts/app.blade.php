@@ -101,8 +101,13 @@
                 @yield ('contenido')
 
             </div>
+            
+            
 
         </div>
+            <footer class="bg-white sm:rounded-lg mt-1">
+                <p  class="text-center text-black" >SASEB 2023 - Versión {{ config('app.app_version') }}</p>
+            </footer>
     </section>
 
     @stack('modals')
@@ -110,9 +115,12 @@
     @livewireScripts
     <script src="{{ asset('js/sidebar.js') }}"></script>
 
+
     @yield('js')
 
 
 </body>
+
+
 
 </html>
