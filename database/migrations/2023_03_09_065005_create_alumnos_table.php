@@ -16,12 +16,11 @@ return new class extends Migration
         Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("lastname");
+            $table->string("lastname")->nullable();
             $table->date("birthdate");
             $table->string("group");
             $table->string("shift");
             $table->string("gender");
-            // $table->string("birthplace");
             $table->string("time_to_reside");
             $table->string("domicile");
             $table->string("home_phone");
