@@ -45,7 +45,11 @@
         @can("user.edit")
         <div class="col-span-6 sm:col-span-6">
             <label for="rol">Rol</label>
-            <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " name="role">
+            @if($user->id == Auth::user()->id)
+            <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm  opacity-50" name="role" disabled>
+            @else
+            <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " name="role" >
+            @endif
                 @foreach ($roles as $role)
                 <option value="{{ $role->id }}" @if ($user->getRoleNames()->first() == $role->name)
                    selected="selected" 
