@@ -49,14 +49,23 @@
                         </a>
                     </li>
                 @endcan
-                @can('user.index')
+                {{-- @can('user.index') --}}
+                @role('Psicologo')
+                <li>
+                    <a href="/user/{{Auth::user()->id}}/edit">
+                        <i class="fa-solid fa-users"></i>
+                        <span class="link-name">Cuenta</span>
+                    </a>
+                </li>
+                @else
                 <li>
                     <a href="/user">
                         <i class="fa-solid fa-users"></i>
                         <span class="link-name">Usuarios</span>
                     </a>
                 </li>
-                @endcan
+                @endrole
+                {{-- @endcan --}}
                 @can('expediente.index')
                 <li><a href="/expediente">
                         <i class="fa-solid fa-folder-open"></i>

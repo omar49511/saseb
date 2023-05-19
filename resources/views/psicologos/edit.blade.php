@@ -42,6 +42,7 @@
                 <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " type="text" name="telefono" id="telefono" value="{{ $user->phone }}">
             </div>
         </div>
+        @can("user.edit")
         <div class="col-span-6 sm:col-span-6">
             <label for="rol">Rol</label>
             <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " name="role">
@@ -52,6 +53,7 @@
                 @endforeach
             </select>
         </div>
+        @endcan
         <div class="col-span-6 sm:col-span-6">
             <div class="sm:text-center">
                 <p class="text-gray-600">Dejar en blanco en caso de que no se quiera cambiar la contraseña.</p>
