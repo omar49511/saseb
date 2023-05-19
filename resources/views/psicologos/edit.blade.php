@@ -82,7 +82,11 @@
             <button class="w-full border-2 border-blue-500 hover:bg-blue-700 hover:text-white text-blue-500 font-bold py-2 rounded" type="submit">Guardar</button>
         </div>
         <div class="col-span-6 sm:col-span-3 grid">
+            @role('Psicologo')
+            <a class="text-center col-span-6 border-2 border-red-500 hover:bg-red-700 hover:text-white text-red-500 font-bold py-2  rounded" href="{{ route('dashboard') }}">
+            @else
             <a class="text-center col-span-6 border-2 border-red-500 hover:bg-red-700 hover:text-white text-red-500 font-bold py-2  rounded" href="{{ route('user.index') }}">
+            @endrole
                 Cancelar
             </a>
         </div>
