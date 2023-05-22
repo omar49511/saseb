@@ -42,22 +42,27 @@
                 <input class="mt-1 block w-full rounded-r-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " type="text" name="telefono" id="telefono" value="{{ $user->phone }}">
             </div>
         </div>
-        @can("user.edit")
-        <div class="col-span-6 sm:col-span-6">
-            <label for="rol">Rol</label>
-            @if($user->id == Auth::user()->id)
-            <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm  opacity-50" name="role" disabled>
-            @else
-            <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " name="role" >
-            @endif
+        @if(auth()->user()->can("user.edit"))
+            <div class="col-span-6 sm:col-span-6">
+                    <label for="rol">Rol</label>
+                @if($user->id == Auth::user()->id)
+                    <input type="hidden" name="role" value="{{$user->roles[0]->id}}">
+                    <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm  opacity-50" name="role" disabled>
+
+                @else
+                    <select class="mt-1 block w-full rounded-md border-gray-400 shadow-sm focus:border-teal-500 focus:ring-indigo-500 sm:text-sm " name="role" >
+                @endif
                 @foreach ($roles as $role)
-                <option value="{{ $role->id }}" @if ($user->getRoleNames()->first() == $role->name)
-                   selected="selected" 
-                @endif>{{ $role->name }}</option>
+                    <option value="{{ $role->id }}" 
+                        @if ($user->getRoleNames()->first() == $role->name)
+                            selected="selected" 
+                        @endif>{{ $role->name }}</option>
                 @endforeach
-            </select>
-        </div>
-        @endcan
+                </select>
+            </div>
+        @else
+             <input type="hidden" name="role" value="{{$user->roles[0]->id}}">
+        @endif
         <div class="col-span-6 sm:col-span-6">
             <div class="sm:text-center">
                 <p class="text-gray-600">Dejar en blanco en caso de que no se quiera cambiar la contraseña.</p>

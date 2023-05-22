@@ -45,7 +45,8 @@ class UserController extends Controller
             $user = User::find(Auth::user()->id);
              // Verificar que el usuario actual no esté editando su propio rol
             if ($request->route()->parameter('user')->id == Auth::user()->id) {
-                if (!$user->hasRole(Role::find($request->role)->name)) {
+                $actual_role = Role::find($request->role)->name;
+                if (!$user->hasRole($actual_role)) {
                     abort(403, 'No puede editar su propio rol mientras este conectado.');
                 }
             }
